@@ -1,6 +1,4 @@
-<?php
-	echo "<footer class=" . ((isset($_POST['table'])) ? "" : "fixed") . ">";
-?>
+<footer>
 
 	<div class=infos>
 
