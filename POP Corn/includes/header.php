@@ -43,29 +43,55 @@
 		</div>
 	</div>
 
-	<nav>
-		<ul>
-			<?php
-				echo "<li><a href=".get_relative_path('index.php').">Accueil</a></li>";
-				echo "<li><a href=".get_page('requeteur.php').">Requeteur</a></li>";
-				echo "<li><a href=".get_page('affichage.php').">Afficher</a></li>";
-			?>
-			<li>
-				<ul class="deroul">
-					<li>
-						<a href="">Tops</a>
-						<ul>
-							<?php
-								echo "<li><a href=".get_page('affichage.php'.'?search=modele').">Top 2019</a></li>";
-							?>
-							<li><a href="">Top 2018</a></li>
-						</ul>
-					</li>
-				</ul>
-			</li>
 
-		</ul>
-	</nav>
+	<?php
+	//Sommes-nous dans la pages
+	//Recuperation du nom de la page dans $pageActuelle
+	$scriptName=$_SERVER['PHP_SELF'];
+	$pageActuelle =substr($scriptName,strrpos($scriptName,'/')+1);
+	if ($pageActuelle==='index.php'){
+		$dirIndex='./';
+		$dirPages='./pages/';
+	}else{
+		$dirIndex='../';
+		$dirPages='./';
+	}
+	//Construction d'un tableau associatif contenant les correspondances
+	//noms de pages /liens barre de navigation
+
+	$pages=array(
+	'Accueil'=>$dirIndex.'index.php',
+	'Top 2019'=>$dirIndex.'pages/top2019.php',
+	'Top 2018'=>$dirIndex.'pages/top2018.php',
+	'Connexion'=>$dirIndex.'pages/connexion.php',
+	'Inscription'=>$dirIndex.'pages/inscription.php'
+	);
+	?>
+
+	<nav>
+	<ul>
+	<?php
+		$cpt = 0;
+		//Affichage des liens de navigation
+		foreach($pages as $nom=>$url){
+
+			if($cpt != 2 || $cpt != 3)
+			{
+				echo "\n",'
+				<li>
+					<ul>
+						<a href="',$url,'">',$nom,'</a>
+					</ul>
+				</li>';
+			}
+			else {
+					echo "\n",'<li><a href="',$url,'">',$nom,'</a></li>';
+			}
+			 $cpt ++;
+		}
+	?>
+	</ul>
+</nav>
 </header>
 
 <script>
