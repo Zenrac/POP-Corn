@@ -1,5 +1,5 @@
-# PPE-Music
-Un répertoire sans utilisé profonde, pour un projet de SIO sur la musique.
+# POP Corn
+Un répertoire du code source de notre site POP Corn, un site référencant les meilleures musique POP.
 
 
-### Ceci est un message trop cool. Utilisez notre programme svp !
+### Attention! Ceci est un projet fait en très peu de temps.
