@@ -32,6 +32,50 @@ header {
 	flex-direction: column;
 }
 
+nav ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: black;
+}
+
+nav ul li a {
+	padding: 10px;
+	color: white;
+	text-align: center;
+}
+
+nav ul li {
+	display: flex;
+	list-style-type: none;
+	font-size: x-large;
+	flex-grow: 1; /* Espace occupé va être élargi */
+	justify-content: space-around;
+}
+
+nav ul li:hover {
+	background-color: #0082A7;
+}
+
+footer {
+	background-color: black;
+	width: 100%;
+	height: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: relative;
+	bottom: 0;
+	margin-top: 10px;
+	height: auto;
+	display: flex;
+}
+
+footer h3 {
+	color: white;
+	text-align: center;
+	margin: 20px;
+}
+
 .infos {
 	display: flex;
 	justify-content: space-around;
@@ -44,6 +88,64 @@ header {
 	width: 30%;
 	color: white;
 	text-align: justify;
+}
+
+.deroul, .deroul ul{
+	list-style:none;
+	text-align:center;
+	width: 100%;
+	text-align: center;
+}
+
+.deroul li{
+	display:inline-block;
+	position:relative;
+}
+
+.deroul ul li{
+	display:inherit;
+	border-radius:0;
+}
+
+.deroul ul li:hover{
+	border-radius:0;
+}
+
+.deroul ul{
+	position:absolute;
+	z-index: 1000;
+	max-height:0;
+	left: 0;
+	right: 0;
+	overflow:hidden;
+	-moz-transition: .1s all .05s;
+	-webkit-transition: .1s all .05s;
+	transition: .1s all .05s;
+	flex-direction: column;
+}
+.deroul li:hover ul{
+	max-height:15em;
+}
+
+/* les a href */
+.deroul a {
+	text-decoration:none;
+	display:block;
+	color:#fff;
+	font-family:arial;
+}
+
+.deroul ul a{
+	padding:8px 0;
+}
+
+.deroul li:hover li a{
+	color:white;
+	text-transform:inherit;
+}
+
+.deroul li:hover a, .deroul li li:hover a{
+	color:white;
 }
 
 h4 {
