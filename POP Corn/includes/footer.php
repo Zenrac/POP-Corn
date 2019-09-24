@@ -1,7 +1,7 @@
 <?php
 	echo "<footer class=" . ((isset($_POST['table'])) ? "" : "fixed") . ">";
 ?>
-
+<img class=logobas src=<?php echo get_relative_path('images/logo.png');?> alt="Notre logo"\>
 	<div class=infos>
 
 		<div class=quisommenous>
