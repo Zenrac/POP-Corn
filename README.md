@@ -2,4 +2,4 @@
 Un répertoire sans utilisé profonde, pour un projet de SIO sur la musique.
 
 
-### Ceci est un message trop cool. Utilisez notre programme svp !
+### Ceci est un message trop cool. N'utilisez pas notre programme s'il vous plaît !
