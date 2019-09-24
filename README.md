@@ -1,4 +1,4 @@
-# PPE-Music
+# POP Corn
 Un répertoire du code source de notre site POP Corn, un site référencant les meilleures musique POP.
 
 
