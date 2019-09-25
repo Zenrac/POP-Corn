@@ -32,29 +32,6 @@
 	<meta property="og:type" content="article">
 	<div class="topheader">
 		<img class=logo src=<?php echo get_relative_path('images/logo.png');?> alt="Notre logo"\>
-		<div id="admin-button" class=admin>
-			<button class="" onclick="openForm()">Connexion</button>
-			<form id="connexadmin" class="connexadmin" action=/oCarnak/pages/admin.php method="post" >
-			<fieldset>
-				<legend><b>Saisir vos identifiants</b></legend>
-				<table>
-					<tbody>
-						<tr>
-							<td> Utilisateur : </td>
-							<td><input type="text" name="user" size="10" required minlength="2" maxlength="30"/></td>
-						</tr>
-						<tr>
-							<td> Mot de passe : </td>
-							<td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="Connexion"/></td>
-						</tr>
-					</tbody>
-				</table>
-			</fieldset>
-			</form>
-		</div>
 	</div>
 
 	<nav>
@@ -77,7 +54,29 @@
 					</li>
 				</ul>
 			</li>
-
+			<div id="admin-button" class=admin>
+				<button class="" onclick="openForm()">Connexion</button>
+				<form id="connexadmin" class="connexadmin" action=/oCarnak/pages/admin.php method="post" >
+				<fieldset>
+					<legend><b>Saisir vos identifiants</b></legend>
+					<table>
+						<tbody>
+							<tr>
+								<td> Utilisateur : </td>
+								<td><input type="text" name="user" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td> Mot de passe : </td>
+								<td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="Connexion"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				</form>
+			</div>
 		</ul>
 	</nav>
 </header>

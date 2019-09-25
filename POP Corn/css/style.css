@@ -30,6 +30,8 @@ header {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	background: rgb(0,245,238);
+	background: radial-gradient(circle, rgba(0,245,238,0.527345972568715) 35%, rgba(255,0,134,0.5329482134650736) 100%);
 }
 
 h4 {
@@ -93,7 +95,7 @@ button {
     padding: 1rem 2rem;
     margin: 0;
     text-decoration: none;
-    background: #0082A7;
+    background: black;
     color: #ffffff;
 		width: 100%;
     font-size: 1rem;
@@ -107,7 +109,7 @@ button {
 
 button:hover,
 button:focus {
-    background: #0082A7;
+	background: #00a2f5;
 }
 
 button:focus {
@@ -120,6 +122,28 @@ button:active {
 }
 
 button:focus {outline:0;}
+
+/*--------------------------------------gestion du logo-----------------------------------*/
+.logo{
+	height: 300px;
+	width: auto;
+	margin-left: auto;
+  margin-right: auto;
+	margin-top: -65px;
+	margin-bottom: -100px;
+
+}
+
+.logobas{
+	height: 100px;
+	width: auto;
+}
+
+.topheader {
+	display: flex;
+	justify-content: space-between;
+	max-height: auto;
+}
 
 .infos {
 	display: flex;
@@ -193,11 +217,7 @@ button:focus {outline:0;}
 	color:white;
 }
 
-.topheader {
-	display: flex;
-	justify-content: space-between;
-	max-height: 50px;
-}
+
 
 .admin {
 	color: white;
@@ -216,7 +236,7 @@ button:focus {outline:0;}
 
 .connexadmin {
 	position: relative;
-	background-color: #0082A7;
+	background-color: black;
 	margin: auto;
 	width: 100%;
 	z-index: 10;
