@@ -240,11 +240,10 @@ button:focus {outline:0;}
 }
 
 .connexadmin {
-	position: relative;
+	position: absolute;
 	background-color: black;
 	margin: auto;
-	width: 100%;
-	z-index: 10;
+	padding: 25px;
 	display: none;
 }
 
