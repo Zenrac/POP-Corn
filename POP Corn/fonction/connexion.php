@@ -1,18 +1,18 @@
 <?php
-include_once('connexpdo.inc.php');
-$cnx=connexpdo('bdoccasion','myparam');
+include_once(get_relative_path('outils/connexpdo.inc.php'));
+$cnx=connexpdo('bdpopcorn','myparam');
 
 class connect
 {
 	public function funcconnection ($nom, $mdp)
 	{
-		include_once('connexpdo.inc.php');
-		$cnx=connexpdo('bdpopcorn','myparam');
+		include_once(get_relative_path('outils/connexpdo.inc.php'));
+        $cnx=connexpdo('bdpopcorn','myparam');
 
 			// verifie que l'utilisateur a bien mis la bonne combinaison nom/mot de passe
-			$requete1 = "	SELECT * FROM utilisateur
+			$requete1 = "	SELECT pseudo FROM utilisateur
 							WHERE pseudo = '".$nom."'
-							AND motdepasse = '".$mdp."'
+							AND mdpUser = '".$mdp."'
 							 ;";
 
 			$req=$cnx->query($requete1);
@@ -26,7 +26,7 @@ class connect
 				else
 				{
 					//rediriger sur une autre page
-					  header('Location: '.get_page('indexAdmin.php'));
+					  header('Location: '.get_relative_path('pages/back/indexAdmin.php'));
   					exit();
 				}
 					$cnx=null;
