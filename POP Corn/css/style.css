@@ -58,6 +58,11 @@ nav ul li a {
 	text-align: center;
 }
 
+nav ul li a:hover {
+	text-decoration: none !important;
+	color: white;
+}
+
 nav ul li {
 	display: flex;
 	list-style-type: none;
@@ -98,7 +103,7 @@ button {
     background: black;
     color: #ffffff;
 		width: 100%;
-    font-size: 1rem;
+    font-size: 24px;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out,
@@ -235,11 +240,10 @@ button:focus {outline:0;}
 }
 
 .connexadmin {
-	position: relative;
+	position: absolute;
 	background-color: black;
 	margin: auto;
-	width: 100%;
-	z-index: 10;
+	padding: 25px;
 	display: none;
 }
 
