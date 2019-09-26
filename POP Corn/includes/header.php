@@ -47,16 +47,16 @@
 						<a href="">Tops</a>
 						<ul>
 							<?php
-								echo "<li><a href=".get_page('affichage.php'.'?search=modele').">Top 2019</a></li>";
+								echo "<li><a href=".get_page('top2019.php').">Top 2019</a></li>";
+                                echo "<li><a href=".get_page('top2018.php').">Top 2018</a></li>";
 							?>
-							<li><a href="">Top 2018</a></li>
 						</ul>
 					</li>
 				</ul>
 			</li>
 			<div id="admin-button" class=admin>
 				<button class="" onclick="openForm()">Connexion</button>
-				<form id="connexadmin" class="connexadmin" action=/oCarnak/pages/admin.php method="post" >
+				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
 				<fieldset>
 					<legend><b>Saisir vos identifiants</b></legend>
 					<table>
@@ -80,3 +80,24 @@
 		</ul>
 	</nav>
 </header>
+
+<!--Verifier connexion--!>
+<?php
+include_once(get_relative_path('outils/connexpdo.inc.php'));
+$cnx=connexpdo('bdpopcorn','myparam');
+include_once(get_relative_path('fonction/connexion.php'));
+                      
+if (!empty($_POST['user']))
+{
+	$val1 = $_POST['user'];
+	$val2 = $_POST['password'];
+	$_SESSION['user'] = $val1;
+	$_SESSION['password'] = $val2;
+	$instance = new connect();
+
+	$instance->funcconnection($val1, $val2);
+	$val1 = "";
+	$val2 = "";
+    echo"<script> alert('test2'); </script>";
+}
+?>

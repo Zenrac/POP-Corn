@@ -262,3 +262,7 @@ button:focus {outline:0;}
 	top: 45%;
 	position: absolute;
 }
+
+input{
+    color:black;
+}
