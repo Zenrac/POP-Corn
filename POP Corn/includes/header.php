@@ -91,13 +91,10 @@ if (!empty($_POST['user']))
 {
 	$val1 = $_POST['user'];
 	$val2 = $_POST['password'];
-	$_SESSION['user'] = $val1;
-	$_SESSION['password'] = $val2;
 	$instance = new connect();
 
 	$instance->funcconnection($val1, $val2);
 	$val1 = "";
 	$val2 = "";
-    echo"<script> alert('test2'); </script>";
 }
 ?>
