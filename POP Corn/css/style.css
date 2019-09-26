@@ -30,6 +30,124 @@ header {
 	width: 100%;
 	display: flex;
 	flex-direction: column;
+	background: rgb(0,245,238);
+	background: radial-gradient(circle, rgba(0,245,238,0.527345972568715) 35%, rgba(255,0,134,0.5329482134650736) 100%);
+}
+
+h4 {
+	text-align: center;
+	color: #0082A7;
+	margin: 10px;
+}
+
+h5 {
+	font-size: 12px;
+	text-align: center;
+}
+
+nav ul {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: black;
+}
+
+nav ul li a {
+	padding: 10px;
+	color: white;
+	text-align: center;
+}
+
+nav ul li a:hover {
+	text-decoration: none !important;
+	color: white;
+}
+
+nav ul li {
+	display: flex;
+	list-style-type: none;
+	font-size: x-large;
+	flex-grow: 1; /* Espace occupé va être élargi */
+	justify-content: space-around;
+}
+
+nav ul li:hover {
+	background-color: #0082A7;
+}
+
+footer {
+	background-color: black;
+	width: 100%;
+	height: 100px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	position: relative;
+	bottom: 0;
+	margin-top: 10px;
+	height: auto;
+	display: flex;
+}
+
+footer h3 {
+	color: white;
+	text-align: center;
+	margin: 20px;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: black;
+    color: #ffffff;
+		width: 100%;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+	background: #00a2f5;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+button:focus {outline:0;}
+
+/*--------------------------------------gestion du logo-----------------------------------*/
+.logo{
+	height: 300px;
+	width: auto;
+	margin-left: auto;
+  margin-right: auto;
+	margin-top: -65px;
+	margin-bottom: -100px;
+
+}
+
+.logobas{
+	height: 100px;
+	width: auto;
+}
+
+.topheader {
+	display: flex;
+	justify-content: space-between;
+	max-height: auto;
 }
 
 .infos {
@@ -46,13 +164,101 @@ header {
 	text-align: justify;
 }
 
-h4 {
+.deroul, .deroul ul{
+	list-style:none;
+	text-align:center;
+	width: 100%;
 	text-align: center;
-	color: #0082A7;
-	margin: 10px;
 }
 
-h5 {
-	font-size: 12px;
+.deroul li{
+	display:inline-block;
+	position:relative;
+}
+
+.deroul ul li{
+	display:inherit;
+	border-radius:0;
+}
+
+.deroul ul li:hover{
+	border-radius:0;
+}
+
+.deroul ul{
+	position:absolute;
+	z-index: 1000;
+	max-height:0;
+	left: 0;
+	right: 0;
+	overflow:hidden;
+	-moz-transition: .1s all .05s;
+	-webkit-transition: .1s all .05s;
+	transition: .1s all .05s;
+	flex-direction: column;
+}
+.deroul li:hover ul{
+	max-height:15em;
+}
+
+/* les a href */
+.deroul a {
+	text-decoration:none;
+	display:block;
+	color:#fff;
+	font-family:arial;
+}
+
+.deroul ul a{
+	padding:8px 0;
+}
+
+.deroul li:hover li a{
+	color:white;
+	text-transform:inherit;
+}
+
+.deroul li:hover a, .deroul li li:hover a{
+	color:white;
+}
+
+
+
+.admin {
+	color: white;
 	text-align: center;
+	width: 230px;
+}
+
+.admin a, .admin a:visited {
+	color: white;
+	font-size: 20px;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.connexadmin {
+	position: absolute;
+	background-color: black;
+	margin: auto;
+	padding: 25px;
+	display: none;
+}
+
+.connexadmin fieldset {
+	border: none;
+}
+
+.connexadmin fieldset table {
+	height: 100%;
+}
+
+.center-full-text {
+	text-align: center;
+	color: white;
+	font-size: 5em;
+	top: 45%;
+	position: absolute;
 }
