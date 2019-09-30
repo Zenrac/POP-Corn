@@ -12,7 +12,6 @@
 		$separators = substr_count($base, $separator);
 		$count = $separators - $separator_before_main_folder;
 		$before = str_repeat('./', $count);
-		echo $before;
 		return $before . $path;
 	}
 
