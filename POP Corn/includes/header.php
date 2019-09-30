@@ -81,12 +81,12 @@
 	</nav>
 </header>
 
-<!--Verifier connexion--!>
+<!--Verifier connexion-->
 <?php
 include_once(get_relative_path('outils/connexpdo.inc.php'));
 $cnx=connexpdo('bdpopcorn','myparam');
 include_once(get_relative_path('fonction/connexion.php'));
-                      
+
 if (!empty($_POST['user']))
 {
 	$val1 = $_POST['user'];
