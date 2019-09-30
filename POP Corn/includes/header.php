@@ -18,10 +18,10 @@
 	<script src=<?php echo get_relative_path('scripts/spotify.js');?>></script>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
-	<title>oCarnak</title>
+	<title>POP Corn</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Site trop bien.">
-	<meta name="keywords" content="voiture recherche modele">
+	<meta name="description" content="Bibliothèque de musiques POP.">
+	<meta name="keywords" content="musique pop corn">
 
 	<link href=<?php echo get_relative_path('css/style.css');?> rel="stylesheet" type="text/css">
 	<link rel="icon" type="image/png" href=<?php echo get_relative_path('images/logo.png');?> />

@@ -8,6 +8,7 @@
 
 		<?php
 			include_once 'includes/footer.php';
+			echo getRelativePath('css/styles.css');
 		?>
 
 	</body>
