@@ -108,31 +108,32 @@
 
 <!--Verifier connexion-->
 <?php
-	echo get_path('outils/connexpdo.inc.php');
 	include_once(get_path('outils/connexpdo.inc.php'));
-	$cnx=connexpdo('bdpopcorn','myparam');
-	include_once(get_relative_path('fonction/connexion.php'));
-	include_once(get_relative_path('fonction/inscriptionclient.php'));
+	$cnx = connexpdo('bdpopcorn','myparam');
+	if ($cnx) {
+		include_once(get_relative_path('fonction/connexion.php'));
+		include_once(get_relative_path('fonction/inscriptionclient.php'));
 
-	if (!empty($_POST['connexion']))
-	{
-		$val1 = $_POST['user'];
-		$val2 = $_POST['password'];
-		$instance = new connect();
+		if (!empty($_POST['connexion']))
+		{
+			$val1 = $_POST['user'];
+			$val2 = $_POST['password'];
+			$instance = new connect();
 
-		$instance->funcconnection($val1, $val2);
-		$val1 = "";
-		$val2 = "";
-	}
+			$instance->funcconnection($val1, $val2);
+			$val1 = "";
+			$val2 = "";
+		}
 
-	if (!empty($_POST['inscription']))
-	{
-		$val1 = $_POST['nom'];
-		$val2 = $_POST['mdp'];
-		$instance = new inscript();
+		if (!empty($_POST['inscription']))
+		{
+			$val1 = $_POST['nom'];
+			$val2 = $_POST['mdp'];
+			$instance = new inscript();
 
-		$instance->funcinscription($val1, $val2);
-		$val1 = "";
-		$val2 = "";
+			$instance->funcinscription($val1, $val2);
+			$val1 = "";
+			$val2 = "";
+		}
 	}
 ?>
