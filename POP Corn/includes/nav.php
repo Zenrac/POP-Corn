@@ -5,7 +5,7 @@
   <li>
     <ul class="deroul">
       <li>
-        <a href="">Tops</a>
+        <a href="#">Tops</a>
         <ul>
           <?php
             echo "<li><a href=".get_path('pages/top2019.php').">Top 2019</a></li>";
@@ -15,6 +15,7 @@
       </li>
     </ul>
   </li>
+  <?php echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>"; ?>
 
   <div id="admin-button" class=admin>
     <button class="" onclick="openForm()">Connexion</button>

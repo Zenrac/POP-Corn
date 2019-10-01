@@ -1,5 +1,6 @@
 <?php
 	include(dirname(__DIR__).'/outils/accesseurs.php');
+	session_start();
 ?>
 
 <header>
@@ -59,22 +60,23 @@
 		{
 			$val1 = $_POST['user'];
 			$val2 = $_POST['password'];
-			$instance = new connect();
 
-			$instance->funcconnection($val1, $val2);
+
+			if ($_POST['type'] == 1)
+			{
+				$instance = new connect();
+				$instance->funcconnection($val1, $val2);
+			}
+
+			else
+			{
+				$instance = new inscript();
+				$instance->funcinscription($val1, $val2);
+			}
+
 			$val1 = "";
 			$val2 = "";
-		}
 
-		if (!empty($_POST['inscription']))
-		{
-			$val1 = $_POST['nom'];
-			$val2 = $_POST['mdp'];
-			$instance = new inscript();
-
-			$instance->funcinscription($val1, $val2);
-			$val1 = "";
-			$val2 = "";
 		}
 	}
 ?>
