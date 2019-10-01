@@ -111,8 +111,8 @@
 	include_once(get_path('outils/connexpdo.inc.php'));
 	$cnx = connexpdo('bdpopcorn','myparam');
 	if ($cnx) {
-		include_once(get_relative_path('fonction/connexion.php'));
-		include_once(get_relative_path('fonction/inscriptionclient.php'));
+		include_once(get_path('fonction/connexion.php'));
+		include_once(get_path('fonction/inscriptionclient.php'));
 
 		if (!empty($_POST['connexion']))
 		{
