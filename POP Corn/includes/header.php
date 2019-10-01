@@ -15,7 +15,7 @@
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-	<script src=<?php echo get_relative_path('scripts/spotify.js');?>></script>
+	<script src=<?php echo get_path('scripts/spotify.js');?>></script>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>POP Corn</title>
@@ -23,21 +23,21 @@
 	<meta name="description" content="Site trop bien.">
 	<meta name="keywords" content="voiture recherche modele">
 
-	<link href=<?php echo get_relative_path('css/style.css');?> rel="stylesheet" type="text/css">
-	<link rel="icon" type="image/png" href=<?php echo get_relative_path('images/logo.png');?> />
+	<link href=<?php echo get_path('css/style.css');?> rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/png" href=<?php echo get_path('images/logo.png');?> />
 	<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico"/>
 	<meta property="og:title" content="Home">
 	<meta property="og:description" content="Meilleur site de l'univers.">
 	<meta property="og:image" content="">
 	<meta property="og:type" content="article">
 	<div class="topheader">
-		<img class=logo src=<?php echo get_relative_path('images/logo.png');?> alt="Notre logo"\>
+		<img class=logo src=<?php echo get_path('images/logo.png');?> alt="Notre logo"\>
 	</div>
 
 	<nav>
 		<ul>
 			<?php
-				echo "<li><a href=".get_relative_path('index.php').">Accueil</a></li>";
+				echo "<li><a href=".get_path('index.php').">Accueil</a></li>";
 			?>
 			<li>
 				<ul class="deroul">
@@ -52,6 +52,31 @@
 					</li>
 				</ul>
 			</li>
+
+			<div id="admin-button" class=admin>
+				<button class="" onclick="openForm()">Inscription</button>
+				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
+				<fieldset>
+					<legend><b>Saisir vos identifiants</b></legend>
+					<table>
+						<tbody>
+							<tr>
+								<td> Utilisateur : </td>
+								<td><input type="text" name="nom" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td> Mot de passe : </td>
+								<td><input type="password" name="mdp" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="inscription"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				</form>
+			</div>
+
 			<div id="admin-button" class=admin>
 				<button class="" onclick="openForm()">Connexion</button>
 				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
@@ -60,15 +85,15 @@
 					<table>
 						<tbody>
 							<tr>
-								<td> Utilisateur : </td>
+								<td> Utilisateur: </td>
 								<td><input type="text" name="user" size="10" required minlength="2" maxlength="30"/></td>
 							</tr>
 							<tr>
-								<td> Mot de passe : </td>
+								<td> Mot de passe: </td>
 								<td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
 							</tr>
 							<tr>
-								<td><input type="submit" value="Connexion"/></td>
+								<td><input type="submit" value="connexion"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -79,19 +104,31 @@
 	</nav>
 </header>
 
-<!--Verifier connexion--!>
+<!--Verifier connexion-->
 <?php
-include_once(get_relative_path('outils/connexpdo.inc.php'));
+include_once(get_path('outils/connexpdo.inc.php'));
 $cnx=connexpdo('bdpopcorn','myparam');
 include_once(get_relative_path('fonction/connexion.php'));
-                      
-if (!empty($_POST['user']))
+include_once(get_relative_path('fonction/inscription.php'));
+
+if (!empty($_POST['connexion']))
 {
 	$val1 = $_POST['user'];
 	$val2 = $_POST['password'];
 	$instance = new connect();
 
 	$instance->funcconnection($val1, $val2);
+	$val1 = "";
+	$val2 = "";
+}
+              
+if (!empty($_POST['inscription']))
+{
+	$val1 = $_POST['nom'];
+	$val2 = $_POST['mdp'];
+	$instance = new inscript();
+
+	$instance->funcinscription($val1, $val2);
 	$val1 = "";
 	$val2 = "";
 }
