@@ -255,10 +255,18 @@ button:focus {outline:0;}
 	height: 100%;
 }
 
+.connexadmin fieldset table tbody tr td {
+	color: white;
+}
+
 .center-full-text {
 	text-align: center;
 	color: white;
 	font-size: 5em;
 	top: 45%;
 	position: absolute;
+}
+
+input{
+    color:black;
 }
