@@ -114,7 +114,7 @@
 		include_once(get_path('fonction/connexion.php'));
 		include_once(get_path('fonction/inscriptionclient.php'));
 
-		if (!empty($_POST['connexion']))
+		if (!empty($_POST['user']) && !empty($_POST['password']))
 		{
 			$val1 = $_POST['user'];
 			$val2 = $_POST['password'];
