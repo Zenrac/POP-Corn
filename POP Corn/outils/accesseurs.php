@@ -6,12 +6,17 @@
 
 	function get_path($path)
 	{
-		$separator_before_main_folder = 2;
+		$separator_before_main_folder = 3;
 		$base = $_SERVER['PHP_SELF'];
 		$separator = substr($base, 0, 1);
 		$separators = substr_count($base, $separator);
 		$count = $separators - $separator_before_main_folder;
-		$before = str_repeat('./', $count);
+		if ($count > 0) {
+			$before = str_repeat('../', $count);
+		}
+		else {
+			$before = './';
+		}
 		return $before . $path;
 	}
 
