@@ -52,6 +52,31 @@
 					</li>
 				</ul>
 			</li>
+
+			<div id="admin-button" class=admin>
+				<button class="" onclick="openForm()">Inscription</button>
+				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
+				<fieldset>
+					<legend><b>Saisir vos identifiants</b></legend>
+					<table>
+						<tbody>
+							<tr>
+								<td> Utilisateur : </td>
+								<td><input type="text" name="nom" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td> Mot de passe : </td>
+								<td><input type="password" name="mdp" size="10" required minlength="2" maxlength="30"/></td>
+							</tr>
+							<tr>
+								<td><input type="submit" value="inscription"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				</form>
+			</div>
+
 			<div id="admin-button" class=admin>
 				<button class="" onclick="openForm()">Connexion</button>
 				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
@@ -68,7 +93,7 @@
 								<td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
 							</tr>
 							<tr>
-								<td><input type="submit" value="Connexion"/></td>
+								<td><input type="submit" value="connexion"/></td>
 							</tr>
 						</tbody>
 					</table>
@@ -84,8 +109,9 @@
 include_once(get_relative_path('outils/connexpdo.inc.php'));
 $cnx=connexpdo('bdpopcorn','myparam');
 include_once(get_relative_path('fonction/connexion.php'));
-                      
-if (!empty($_POST['user']))
+include_once(get_relative_path('fonction/inscription.php'));
+
+if (!empty($_POST['connexion']))
 {
 	$val1 = $_POST['user'];
 	$val2 = $_POST['password'];
@@ -95,4 +121,16 @@ if (!empty($_POST['user']))
 	$val1 = "";
 	$val2 = "";
 }
+
+if (!empty($_POST['inscription']))
+{
+	$val1 = $_POST['nom'];
+	$val2 = $_POST['mdp'];
+	$instance = new inscript();
+
+	$instance->funcinscription($val1, $val2);
+	$val1 = "";
+	$val2 = "";
+}
+
 ?>
