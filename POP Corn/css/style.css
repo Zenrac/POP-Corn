@@ -255,6 +255,10 @@ button:focus {outline:0;}
 	height: 100%;
 }
 
+.connexadmin fieldset table tbody tr td {
+	color: white;
+}
+
 .center-full-text {
 	text-align: center;
 	color: white;
