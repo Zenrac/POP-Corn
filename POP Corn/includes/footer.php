@@ -6,7 +6,9 @@
 
 		<div class=quisommenous>
 			<h4>
-				Qui sommes-nous ?
+				<?php
+					echo "<a href=".get_path('pages/info.php').">Qui sommes-nous ?</a>";
+				?>
 			</h4>
 			<h5>
 				Un service vous proposant les meilleures musiques Pop du moment.
@@ -14,7 +16,9 @@
 		</div>
 		<div class=mentions>
 			<h4>
-				Mentions légales
+				<?php
+					echo "<a href=".get_path('pages/mentionLegal.php').">Mentions légales</a>";
+				?>
 			</h4>
 			<h5>
 				Ici se trouve une tentative d'écriture de mentions légales.
@@ -22,7 +26,9 @@
 		</div>
 		<div class=nouscontacter>
 			<h4>
-				Nous contacter.
+				<?php
+					echo "<a href=".get_path('pages/contact.php').">Nous contacter</a>";
+				?>
 			</h4>
 			<h5>
 				Une suggestion? Un commentaire à nous faire parvenir ? N'hésitez pas à nous contacter!
