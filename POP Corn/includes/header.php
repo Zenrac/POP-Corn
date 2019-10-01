@@ -45,8 +45,8 @@
 						<a href="">Tops</a>
 						<ul>
 							<?php
-								echo "<li><a href=".get_page('top2019.php').">Top 2019</a></li>";
-                                echo "<li><a href=".get_page('top2018.php').">Top 2018</a></li>";
+								echo "<li><a href=".get_path('pages/top2019.php').">Top 2019</a></li>";
+                                echo "<li><a href=".get_path('pages/top2018.php').">Top 2018</a></li>";
 							?>
 						</ul>
 					</li>
@@ -106,30 +106,31 @@
 
 <!--Verifier connexion-->
 <?php
-include_once(get_path('outils/connexpdo.inc.php'));
-$cnx=connexpdo('bdpopcorn','myparam');
-include_once(get_relative_path('fonction/connexion.php'));
-include_once(get_relative_path('fonction/inscription.php'));
+	echo get_path('outils/connexpdo.inc.php');
+	include_once(get_path('outils/connexpdo.inc.php'));
+	$cnx=connexpdo('bdpopcorn','myparam');
+	include_once(get_relative_path('fonction/connexion.php'));
+	include_once(get_relative_path('fonction/inscription.php'));
 
-if (!empty($_POST['connexion']))
-{
-	$val1 = $_POST['user'];
-	$val2 = $_POST['password'];
-	$instance = new connect();
+	if (!empty($_POST['connexion']))
+	{
+		$val1 = $_POST['user'];
+		$val2 = $_POST['password'];
+		$instance = new connect();
 
-	$instance->funcconnection($val1, $val2);
-	$val1 = "";
-	$val2 = "";
-}
-              
-if (!empty($_POST['inscription']))
-{
-	$val1 = $_POST['nom'];
-	$val2 = $_POST['mdp'];
-	$instance = new inscript();
+		$instance->funcconnection($val1, $val2);
+		$val1 = "";
+		$val2 = "";
+	}
 
-	$instance->funcinscription($val1, $val2);
-	$val1 = "";
-	$val2 = "";
-}
+	if (!empty($_POST['inscription']))
+	{
+		$val1 = $_POST['nom'];
+		$val2 = $_POST['mdp'];
+		$instance = new inscript();
+
+		$instance->funcinscription($val1, $val2);
+		$val1 = "";
+		$val2 = "";
+	}
 ?>
