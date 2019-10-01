@@ -1,12 +1,12 @@
 <?php
-include_once(get_relative_path('outils/connexpdo.inc.php'));
+include_once(get_path('outils/connexpdo.inc.php'));
 $cnx=connexpdo('bdpopcorn','myparam');
 
 class connect
 {
 	public function funcconnection ($nom, $mdp)
 	{
-		include_once(get_relative_path('outils/connexpdo.inc.php'));
+		include_once(get_path('outils/connexpdo.inc.php'));
         $cnx=connexpdo('bdpopcorn','myparam');
 
 			// verifie que l'utilisateur a bien mis la bonne combinaison nom/mot de passe
@@ -42,7 +42,7 @@ class connect
 		    				if($donnees['Admin'] == "Oui")
                             {
                                 //rediriger sur une autre page
-                                header('Location: '.get_relative_path('pages/back/indexAdmin.php'));
+                                header('Location: '.get_path('pages/back/indexAdmin.php'));
                                 exit();
                             }
                             else
