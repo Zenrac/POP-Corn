@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mar 24 Septembre 2019 à 13:19
+-- Généré le :  Jeu 26 Septembre 2019 à 13:51
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -137,8 +137,16 @@ CREATE TABLE `tag` (
 CREATE TABLE `utilisateur` (
   `numUser` int(11) NOT NULL,
   `pseudo` varchar(32) DEFAULT NULL,
-  `mdpUser` varchar(32) DEFAULT NULL
+  `mdpUser` varchar(32) DEFAULT NULL,
+  `Admin` enum('Oui','Non') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`numUser`, `pseudo`, `mdpUser`, `Admin`) VALUES
+(1, 'toto', 'sio', 'Oui');
 
 --
 -- Index pour les tables exportées
@@ -243,7 +251,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `numUser` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- Contraintes pour les tables exportées
 --

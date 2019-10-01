@@ -21,13 +21,37 @@ class connect
 
 				if($nblignes==0)
 					{
-						echo "<p>Erreur de connexion</p>";
+						echo "<H1>Erreur de connexion</H1>";
 					}
 				else
 				{
-					//rediriger sur une autre page
-					  header('Location: '.get_relative_path('pages/back/indexAdmin.php'));
-  					exit();
+                    
+                    $requete2 = "	SELECT Admin FROM utilisateur
+							WHERE pseudo = '".$nom."'
+							AND mdpUser = '".$mdp."'
+							 ;";
+                    
+                        $_SESSION['user'] = $nom;
+	                       $_SESSION['password'] = $mdp;
+                    
+                    
+                    $req=$cnx->query($requete2);
+                    
+                    while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+		    				if($donnees['Admin'] == "Oui")
+                            {
+                                //rediriger sur une autre page
+                                header('Location: '.get_relative_path('pages/back/indexAdmin.php'));
+                                exit();
+                            }
+                            else
+                            {
+                               // a faire
+                            }
+						}
+
+					
 				}
 					$cnx=null;
 					$req ->closeCursor();
