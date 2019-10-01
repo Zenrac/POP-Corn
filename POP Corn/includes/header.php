@@ -16,6 +16,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	<script src=<?php echo get_path('scripts/spotify.js');?>></script>
+	<script src=<?php echo get_path('scripts/openform.js');?>></script>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>POP Corn</title>
@@ -54,18 +55,18 @@
 			</li>
 
 			<div id="admin-button" class=admin>
-				<button class="" onclick="openForm()">Inscription</button>
-				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
+				<button class="" onclick="openForm(id=2)">Inscription</button>
+				<form id="inscription" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
 				<fieldset>
 					<legend><b>Saisir vos identifiants</b></legend>
 					<table>
 						<tbody>
 							<tr>
-								<td> Utilisateur : </td>
+								<td> Utilisateur: </td>
 								<td><input type="text" name="nom" size="10" required minlength="2" maxlength="30"/></td>
 							</tr>
 							<tr>
-								<td> Mot de passe : </td>
+								<td> Mot de passe: </td>
 								<td><input type="password" name="mdp" size="10" required minlength="2" maxlength="30"/></td>
 							</tr>
 							<tr>
@@ -79,7 +80,7 @@
 
 			<div id="admin-button" class=admin>
 				<button class="" onclick="openForm()">Connexion</button>
-				<form id="connexadmin" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
+				<form id="connexion" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
 				<fieldset>
 					<legend><b>Saisir vos identifiants</b></legend>
 					<table>
@@ -100,6 +101,7 @@
 				</fieldset>
 				</form>
 			</div>
+
 		</ul>
 	</nav>
 </header>
@@ -110,7 +112,7 @@
 	include_once(get_path('outils/connexpdo.inc.php'));
 	$cnx=connexpdo('bdpopcorn','myparam');
 	include_once(get_relative_path('fonction/connexion.php'));
-	include_once(get_relative_path('fonction/inscription.php'));
+	include_once(get_relative_path('fonction/inscriptionclient.php'));
 
 	if (!empty($_POST['connexion']))
 	{

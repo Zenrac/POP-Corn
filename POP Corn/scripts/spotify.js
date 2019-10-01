@@ -22,8 +22,3 @@ function fillDataBase() {
   });
 
 };
-
-function openForm() {
-	current = document.getElementById("connexadmin").style.display;
-	document.getElementById("connexadmin").style.display = (current == "block") ? "none" : "block";
-}
