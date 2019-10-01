@@ -12,7 +12,8 @@
 		}
 		catch(PDOException $except)
 		{
-			die('Echec de la connexion'.$except->getMessage());
+			// echo "<script>console.log('$except')</script>";
+			return false;
 		}
 	}
 ?>
