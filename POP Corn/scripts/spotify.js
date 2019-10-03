@@ -7,7 +7,7 @@ function fillDataBase() {
   const top_2018 = "3pFAbyXA2ALOe79w3oIbaa";
   const top_all = "3ZgmfR6lsnCwdffZUan8EA";
 
-  const token = "BQDWR6GrJsKDoPAiZroAt_oblNBP06iJSgK5ZXxS1yXtH8o_pzv65SyUCM4_RcqJfBkF0T3LRqFajqcEHJT3IurCNDPxyE1ZglZ1Ac3erIEJxPuv2ZwGHzGqhwFpbJsFEKJmBDUCJbsQKmJDqY_4Dpcb02X-vEC1fth1U0w";
+  const token = "BQBVNjQUiOE-5z_ShiJrlHOyeNP7tAJmXGZckdyfiqkio-WBVK9OmnUrrl33XoJFP_anqn-VKF-LXWdAqyhL9ZjmKZpe78XDhr8sG-iiZCFyamMzLjQGsuXY5IE6kXlytEQKlIKF7pTGXAe93Bmf5NiTT74xJA7Wqx1eZxU";
 
 	let config = {
 	  headers: {
@@ -36,13 +36,32 @@ function axiosRequest(url, config) {
 }
 
 function manageData(data) {
-  var userStr = JSON.stringify(data.items);
-  $.ajax({
-      url: '../index.php',
-      type: 'post',
-      data: {user: userStr},
-      success: function(response){
-          //do whatever.
+  deja = [];
+  text = "";
+  data.items.forEach((value) => {
+    console.log(value.track);
+    track = value.track;
+    track.artists.forEach((artist) => {
+      if (!deja.includes(artist.id)) {
+        deja.push(artist.id);
+        noms = artist.name.split(' ');
+        artist_id = artist.id;
+        text += `INSERT INTO Auteur(numAuteur, nom, prenom) VALUES(${artist_id}, ${noms[0]}, ${noms[1]});\n`
       }
-  });
+      if (!deja.includes(track.album.id)) {
+        deja.push(track.album.id);
+        nom = track.album.name;
+        album_id = track.album.id;
+        album_image = track.album.images[0];
+        album_annee = track.album.release_date.split('-')[0];
+        text += `INSERT INTO Album(numAlbum, nomAlbum, anneeAlbum, imageAlbum) VALUES(${album_id}, ${nom}, ${album_annee}, ${album_image});\n`
+      }
+    })
+  })
+  requeteSQL(text);
 }
+
+function requeteSQL(text) {
+  text = text.split('undefined').join('null');
+  console.log(text);
+};
