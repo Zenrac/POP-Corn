@@ -40,7 +40,12 @@
 
 								echo "<script type=\"text/javascript\">
 								alert('Vous êtes enregistré')</script>";
+
+								$_SESSION['nom'] = $nom;
+
 								$cnx=null;
+								header('Location: '.get_path('pages/profil.php'));
+								exit();
 					}
 			}
 	}
