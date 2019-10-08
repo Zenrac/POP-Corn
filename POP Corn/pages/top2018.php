@@ -3,11 +3,12 @@
 	<body>
 
 		<?php
-			include_once './includes/header.php';
-		?>
+			include_once '../includes/header.php';
 
-		<?php
-			include_once 'includes/footer.php';
+			// $_SESSION['page'] = "TOP18";
+			// include '../fonction/verificationback.php';
+
+			include_once '../includes/footer.php';
 		?>
 
 	</body>

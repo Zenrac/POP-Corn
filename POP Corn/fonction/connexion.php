@@ -1,18 +1,18 @@
 <?php
-include_once('connexpdo.inc.php');
-$cnx=connexpdo('bdoccasion','myparam');
+include_once(get_path('outils/connexpdo.inc.php'));
+$cnx=connexpdo('bdpopcorn','myparam');
 
 class connect
 {
 	public function funcconnection ($nom, $mdp)
 	{
-		include_once('connexpdo.inc.php');
-		$cnx=connexpdo('bdpopcorn','myparam');
+		include_once(get_path('outils/connexpdo.inc.php'));
+        $cnx=connexpdo('bdpopcorn','myparam');
 
 			// verifie que l'utilisateur a bien mis la bonne combinaison nom/mot de passe
-			$requete1 = "	SELECT * FROM utilisateur
+			$requete1 = "	SELECT pseudo FROM utilisateur
 							WHERE pseudo = '".$nom."'
-							AND motdepasse = '".$mdp."'
+							AND mdpUser = '".$mdp."'
 							 ;";
 
 			$req=$cnx->query($requete1);
@@ -21,13 +21,36 @@ class connect
 
 				if($nblignes==0)
 					{
-						echo "<p>Erreur de connexion</p>";
+						echo "<H1>Erreur de connexion</H1>";
 					}
 				else
 				{
-					//rediriger sur une autre page
-					  header('Location: '.get_page('indexAdmin.php'));
-  					exit();
+              $requete2 = "	SELECT Admin FROM utilisateur
+							WHERE pseudo = '".$nom."'
+							AND mdpUser = '".$mdp."';";
+
+                        $_SESSION['nom'] = $nom;
+	                       $_SESSION['motdepasse'] = $mdp;
+
+
+                    $req=$cnx->query($requete2);
+
+                    while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+										{
+		    										if($donnees['Admin'] == "Oui")
+                            {
+                                //rediriger sur une autre page
+                                header('Location: '.get_path('pages/back/indexAdmin.php'));
+                                exit();
+                            }
+                            else
+                            {
+															header('Location: '.get_path('pages/profil.php'));
+															exit();
+                            }
+										}
+
+
 				}
 					$cnx=null;
 					$req ->closeCursor();
