@@ -4,6 +4,9 @@
 
 		<?php
 			include_once ('../../includes/header.php');
+			$_SESSION['page'] = "INDEXAD";
+			include '../../fonction/verificationback.php';
+
 		?>
 
 		<?php

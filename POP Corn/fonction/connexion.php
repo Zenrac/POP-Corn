@@ -25,21 +25,19 @@ class connect
 					}
 				else
 				{
-                    
-                    $requete2 = "	SELECT Admin FROM utilisateur
+              $requete2 = "	SELECT Admin FROM utilisateur
 							WHERE pseudo = '".$nom."'
-							AND mdpUser = '".$mdp."'
-							 ;";
-                    
-                        $_SESSION['user'] = $nom;
-	                       $_SESSION['password'] = $mdp;
-                    
-                    
+							AND mdpUser = '".$mdp."';";
+
+                        $_SESSION['nom'] = $nom;
+	                       $_SESSION['motdepasse'] = $mdp;
+
+
                     $req=$cnx->query($requete2);
-                    
+
                     while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-						{
-		    				if($donnees['Admin'] == "Oui")
+										{
+		    										if($donnees['Admin'] == "Oui")
                             {
                                 //rediriger sur une autre page
                                 header('Location: '.get_path('pages/back/indexAdmin.php'));
@@ -47,11 +45,12 @@ class connect
                             }
                             else
                             {
-                               // a faire
+															header('Location: '.get_path('pages/profil.php'));
+															exit();
                             }
-						}
+										}
 
-					
+
 				}
 					$cnx=null;
 					$req ->closeCursor();
