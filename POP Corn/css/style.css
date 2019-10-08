@@ -83,6 +83,7 @@ footer {
 	padding-bottom: 5px;
 	position: relative;
 	bottom: 0;
+	right: 0;
 	margin-top: 10px;
 	height: auto;
 	display: flex;
@@ -228,6 +229,9 @@ button:focus {outline:0;}
 	color: white;
 	text-align: center;
 	width: 230px;
+	/* top: 0px;
+	right: 0px;
+	position: absolute; */
 }
 
 .admin a, .admin a:visited {
