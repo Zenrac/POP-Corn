@@ -4,9 +4,16 @@
 
 		<?php
 			include_once '../includes/header.php';
-		?>
 
-		<?php
+
+
+		// $_SESSION['page'] = "TOP19";
+		// include '../fonction/verificationback.php';
+
+
+
+
+
 			include_once '../includes/footer.php';
 		?>
 

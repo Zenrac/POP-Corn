@@ -4,6 +4,8 @@
 
 		<?php
 			include_once '../includes/header.php';
+			$_SESSION['page'] = "PROF";
+			include '../fonction/verificationback.php';
 		?>
 
 		<?php
