@@ -40,7 +40,6 @@ function manageData(data) {
   deja = [];
   text = "";
   data.items.forEach((value) => {
-    console.log(value.track);
     track = value.track;
     track.artists.forEach((artist) => {
       if (!deja.includes(artist.id)) {
@@ -91,5 +90,5 @@ function manageData(data) {
 
 function requeteSQL(text) {
   text = text.split('undefined').join('null');
-  console.log(text);
+  return text;
 };

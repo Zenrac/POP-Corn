@@ -32,7 +32,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `album` (
   `numAlbum` varchar(32) NOT NULL,
-  `nomAlbum` varchar(70) DEFAULT NULL,
+  `nomAlbum` varchar(150) DEFAULT NULL,
   `anneeAlbum` datetime DEFAULT NULL,
   `imageAlbum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -46,7 +46,7 @@ CREATE TABLE `album` (
 CREATE TABLE `auteur` (
   `numAuteur` varchar(32) NOT NULL,
   `nom` varchar(32) DEFAULT NULL,
-  `prenom` varchar(32) DEFAULT NULL,
+  `prenom` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -91,7 +91,7 @@ CREATE TABLE `ecrire` (
 CREATE TABLE `musique` (
   `numMusique` varchar(32) NOT NULL,
   `numAlbum` varchar(32) DEFAULT NULL,
-  `titre` varchar(70) DEFAULT NULL,
+  `titre` varchar(150) DEFAULT NULL,
   `duree` varchar(6) DEFAULT NULL,
   `top` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
