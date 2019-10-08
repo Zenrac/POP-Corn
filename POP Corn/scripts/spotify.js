@@ -1,13 +1,13 @@
-get_token = "https://developer.spotify.com/console/get-search-item/?q=&type=&market=&limit=&offset="
-
 function fillDataBase() {
+
+  set_spotify_msg('Chargement en cours...');
 
   const api_url = "https://api.spotify.com/v1/playlists/";
   const top_2019 = "0cYxgXN7MoBWTfVhv1D69A";
   const top_2018 = "3pFAbyXA2ALOe79w3oIbaa";
   const top_all = "3ZgmfR6lsnCwdffZUan8EA";
-
-  const token = "BQBhQOwuQph6GVIGP8EX5wHPldsc6ljtQj14fBIj9lML16hV0G9uTFTUKzWDACZz9A4NOnV5yqoVXLFOU1_1e2rOVCrK0j07I3Drgh7IhSiwRme7AVJ36t9C_VUje9B-j1PiUAhB0WeKM3YTjC0z07Lsvcst2wfbEJ7HVR8";
+  get_token = "https://developer.spotify.com/console/get-search-item/?q=&type=&market=&limit=&offset="
+  const token = "BQAvfqtXkgz9SBm5X0mSfC5AIGUGmp4FpzIUNHjxpa16CUXD4Lnxg72fpnsvOJjsRVmiQBOBHVtQo2i4AiKWtlPauLY5CXt0BoLX_mflG0QNt7dZQxHPhn0WEB5gVkzsfCcjAalD-v1W7NZxIrokrc_2zzDeODjWL4oLsD0";
 
 	let config = {
 	  headers: {
@@ -20,6 +20,15 @@ function fillDataBase() {
   return axiosRequest(url, config);
 };
 
+function getNewToken() {
+  var scopes = 'user-read-private user-read-email';
+  res.redirect('https://accounts.spotify.com/authorize' +
+    '?response_type=code' +
+    '&client_id=' + my_client_id +
+    (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
+    '&redirect_uri=' + encodeURIComponent(redirect_uri));
+}
+
 function axiosRequest(url, config) {
   return axios.get(url, config)
   .then((response) => {
@@ -29,6 +38,7 @@ function axiosRequest(url, config) {
   .catch((error) => {
     // handle error
     console.error(error);
+    set_spotify_msg(error);
     return error;
   })
   .finally(() => {
@@ -37,6 +47,7 @@ function axiosRequest(url, config) {
 }
 
 function manageData(data) {
+  console.log(data);
   deja = [];
   text = "";
   data.items.forEach((value) => {
@@ -85,10 +96,29 @@ function manageData(data) {
       }
     });
   });
-  requeteSQL(text);
+  return requeteSQL(text);
 }
 
 function requeteSQL(text) {
   text = text.split('undefined').join('null');
+
+  var f = document.createElement('form');
+  f.setAttribute('method', "post");
+  f.setAttribute('action', "#");
+  f.setAttribute('name', 'spotifyForm')
+
+  var i = document.createElement("input");
+  i.setAttribute('type', "hidden");
+  i.setAttribute('name', "spotify")
+  i.setAttribute('value', text);
+
+  f.appendChild(i)
+
+  document.getElementsByTagName('body')[0].appendChild(f);
+  document.forms['spotifyForm'].submit();
   return text;
 };
+
+function set_spotify_msg(msg) {
+  document.getElementById('spotifymsg').innerHTML = msg;
+}
