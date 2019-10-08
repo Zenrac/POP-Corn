@@ -17,3 +17,7 @@ function setInscription() {
     document.querySelector('#connexionbutton').value = "Connexion";
   }
 }
+
+function hide_element(id) {
+  document.getElementById(id).outerHTML = '';
+}

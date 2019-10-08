@@ -15,7 +15,6 @@
       </li>
     </ul>
   </li>
-  <?php echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>"; ?>
 
   <div id="admin-button" class=admin>
     <button class="" onclick="openForm()">Connexion</button>
@@ -40,8 +39,17 @@
     </fieldset>
     <!-- 1: se connecter / 2: s'inscrire -->
     <input id="hiddeninput" type="hidden" name="type" value="1"/>
-    <a href="#" id="switchinscription" onclick="setInscription()">Je n'ai pas de compte<a>
+    <a href="#" id="switchinscription" onclick="setInscription()">Je n'ai pas de compte</a>
     </form>
   </div>
+  <?php
+        if(!empty($_SESSION['nom']))
+        {
+          echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>";
+          echo "<li><a href=".get_path('index.php?deconnexion=1')." name='deconnexion'>Deconnexion</a></li>";
+          echo "<script>hide_element('admin-button');</script>";
+        }
 
+
+  ?>
 </ul>

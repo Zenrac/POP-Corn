@@ -30,7 +30,6 @@ class connect
 							AND mdpUser = '".$mdp."';";
 
                         $_SESSION['nom'] = $nom;
-	                       $_SESSION['motdepasse'] = $mdp;
 
 
                     $req=$cnx->query($requete2);
