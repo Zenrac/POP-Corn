@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 26 Septembre 2019 à 13:51
+-- Généré le :  Mar 08 Octobre 2019 à 12:24
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.18
 
@@ -29,7 +29,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `album` (
   `numAlbum` int(11) NOT NULL,
   `nomAlbum` varchar(32) DEFAULT NULL,
-  `anneeAlbum` datetime DEFAULT NULL
+  `anneeAlbum` datetime DEFAULT NULL,
+  `imageAlbum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -90,7 +91,6 @@ CREATE TABLE `musique` (
   `numAlbum` int(11) DEFAULT NULL,
   `titre` varchar(32) DEFAULT NULL,
   `duree` varchar(6) DEFAULT NULL,
-  `anneeMusique` datetime DEFAULT NULL,
   `top` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -146,7 +146,9 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`numUser`, `pseudo`, `mdpUser`, `Admin`) VALUES
-(1, 'toto', 'sio', 'Oui');
+(1, 'toto', 'sio', 'Oui'),
+(2, 'titi', 'tata', 'Non'),
+(3, 'test', 'test', 'Non');
 
 --
 -- Index pour les tables exportées
@@ -223,16 +225,6 @@ ALTER TABLE `utilisateur`
 --
 
 --
--- AUTO_INCREMENT pour la table `album`
---
-ALTER TABLE `album`
-  MODIFY `numAlbum` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT pour la table `auteur`
---
-ALTER TABLE `auteur`
-  MODIFY `numAuteur` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT pour la table `musique`
 --
 ALTER TABLE `musique`
@@ -251,7 +243,7 @@ ALTER TABLE `tag`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `numUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `numUser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- Contraintes pour les tables exportées
 --
