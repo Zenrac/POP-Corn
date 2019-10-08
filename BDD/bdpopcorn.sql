@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS bdpopcorn;
+CREATE DATABASE IF NOT EXISTS bdpopcorn;
+USE bdpopcorn;
+
 -- phpMyAdmin SQL Dump
 -- version 4.5.4.1
 -- http://www.phpmyadmin.net
@@ -27,8 +31,8 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `album` (
-  `numAlbum` int(11) NOT NULL,
-  `nomAlbum` varchar(32) DEFAULT NULL,
+  `numAlbum` varchar(32) NOT NULL,
+  `nomAlbum` varchar(70) DEFAULT NULL,
   `anneeAlbum` datetime DEFAULT NULL,
   `imageAlbum` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -40,7 +44,7 @@ CREATE TABLE `album` (
 --
 
 CREATE TABLE `auteur` (
-  `numAuteur` int(11) NOT NULL,
+  `numAuteur` varchar(32) NOT NULL,
   `nom` varchar(32) DEFAULT NULL,
   `prenom` varchar(32) DEFAULT NULL,
   `dateNaiss` varchar(32) DEFAULT NULL,
@@ -54,8 +58,8 @@ CREATE TABLE `auteur` (
 --
 
 CREATE TABLE `composer` (
-  `numAuteur` int(11) NOT NULL,
-  `numAlbum` int(11) NOT NULL
+  `numAuteur` varchar(32) NOT NULL,
+  `numAlbum` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -66,7 +70,7 @@ CREATE TABLE `composer` (
 
 CREATE TABLE `contenir` (
   `numPlaylist` int(11) NOT NULL,
-  `numMusique` int(11) NOT NULL
+  `numMusique` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -76,8 +80,8 @@ CREATE TABLE `contenir` (
 --
 
 CREATE TABLE `ecrire` (
-  `numAuteur` int(11) NOT NULL,
-  `numMusique` int(11) NOT NULL
+  `numAuteur` varchar(32) NOT NULL,
+  `numMusique` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -87,9 +91,9 @@ CREATE TABLE `ecrire` (
 --
 
 CREATE TABLE `musique` (
-  `numMusique` int(11) NOT NULL,
-  `numAlbum` int(11) DEFAULT NULL,
-  `titre` varchar(32) DEFAULT NULL,
+  `numMusique` varchar(32) NOT NULL,
+  `numAlbum` varchar(32) DEFAULT NULL,
+  `titre` varchar(70) DEFAULT NULL,
   `duree` varchar(6) DEFAULT NULL,
   `top` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -113,7 +117,7 @@ CREATE TABLE `playlist` (
 --
 
 CREATE TABLE `posseder` (
-  `numMusique` int(11) NOT NULL,
+  `numMusique` varchar(32) NOT NULL,
   `numTag` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -228,7 +232,7 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `musique`
 --
 ALTER TABLE `musique`
-  MODIFY `numMusique` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `numMusique` varchar(32) NOT NULL;
 --
 -- AUTO_INCREMENT pour la table `playlist`
 --
