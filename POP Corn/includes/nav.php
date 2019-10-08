@@ -33,7 +33,7 @@
             <td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
           </tr>
           <tr>
-            <td><input type="submit" value="connexion"/></td>
+            <td><input id="connexionbutton" type="submit" value="connexion"/></td>
           </tr>
         </tbody>
       </table>
