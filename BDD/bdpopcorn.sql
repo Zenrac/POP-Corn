@@ -47,8 +47,6 @@ CREATE TABLE `auteur` (
   `numAuteur` varchar(32) NOT NULL,
   `nom` varchar(32) DEFAULT NULL,
   `prenom` varchar(32) DEFAULT NULL,
-  `dateNaiss` varchar(32) DEFAULT NULL,
-  `nationalite` varchar(32) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
