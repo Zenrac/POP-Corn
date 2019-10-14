@@ -4,6 +4,7 @@
 
 		<?php
 			include_once '../includes/header.php';
+			echo "Bonjour ".$_SESSION['nom']);
 		?>
 
 		<?php

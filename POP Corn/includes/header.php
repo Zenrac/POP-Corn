@@ -70,8 +70,24 @@
 
 			else
 			{
-				$instance = new inscript();
-				$instance->funcinscription($val1, $val2);
+				if (!empty($_POST['passwordverif']))
+				{
+					$val3 = $_POST['passwordverif'];
+					if ($val2 == $val3)
+					{
+						$instance = new inscript();
+						$instance->funcinscription($val1, $val2);
+					}
+					else
+					{
+						echo "Vous n'avez pas enregistré le même mot de passe, réessayer !";
+					}
+
+				}
+				else
+				{
+					echo "erreur, vous n'avez pas vérifier le mot de passe";
+				}
 			}
 
 			$val1 = "";
