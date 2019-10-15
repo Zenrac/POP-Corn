@@ -1,32 +1,28 @@
-function fillDataBase() {
+const my_client_id = "37f040251306463aa43d272d61d68526";
+const secret_token = "d0df61c03b394843939d462426bcbc6a";
+const api_url_playlists = "https://api.spotify.com/v1/playlists/";
+const top_2019 = "0cYxgXN7MoBWTfVhv1D69A";
+const top_2018 = "3pFAbyXA2ALOe79w3oIbaa";
+const top_all = "3ZgmfR6lsnCwdffZUan8EA";
+
+var token = "";
+
+function setVariables(newtoken) {
+  token = newtoken;
+}
+
+function fillDataBase(optional=false) {
 
   set_spotify_msg('Chargement en cours...');
 
-  const api_url = "https://api.spotify.com/v1/playlists/";
-  const top_2019 = "0cYxgXN7MoBWTfVhv1D69A";
-  const top_2018 = "3pFAbyXA2ALOe79w3oIbaa";
-  const top_all = "3ZgmfR6lsnCwdffZUan8EA";
-  get_token = "https://developer.spotify.com/console/get-search-item/?q=&type=&market=&limit=&offset="
-  const token = "BQAvfqtXkgz9SBm5X0mSfC5AIGUGmp4FpzIUNHjxpa16CUXD4Lnxg72fpnsvOJjsRVmiQBOBHVtQo2i4AiKWtlPauLY5CXt0BoLX_mflG0QNt7dZQxHPhn0WEB5gVkzsfCcjAalD-v1W7NZxIrokrc_2zzDeODjWL4oLsD0";
-
-	let config = {
-	  headers: {
+  var url = api_url_playlists + (optional ? optional : top_2019) + "/tracks";
+  let get_config = {
+    headers: {
       'Content-Type': 'application/json',
-	    authorization: 'Bearer ' + token
-	  }
-	}
-
-  var url = api_url + top_2019 + "/tracks";
-  return axiosRequest(url, config);
-};
-
-function getNewToken() {
-  var scopes = 'user-read-private user-read-email';
-  res.redirect('https://accounts.spotify.com/authorize' +
-    '?response_type=code' +
-    '&client_id=' + my_client_id +
-    (scopes ? '&scope=' + encodeURIComponent(scopes) : '') +
-    '&redirect_uri=' + encodeURIComponent(redirect_uri));
+      authorization: 'Bearer ' + token
+    }
+  }
+  return axiosRequest(url, get_config);
 }
 
 function axiosRequest(url, config) {

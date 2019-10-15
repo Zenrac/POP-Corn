@@ -9,6 +9,9 @@
 	<!-- Axios -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
+
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -28,8 +31,8 @@
 	<meta name="keywords" content="voiture recherche modele">
 
 	<link href=<?php echo get_path('css/style.css');?> rel="stylesheet" type="text/css">
-	<link rel="icon" type="image/png" href=<?php echo get_path('images/pop.png');?> />
-	<link rel="shortcut icon" type="image/x-icon" href=<?php echo get_path('images/pop.png');?>/>
+	<link rel="icon" type="image/png" href=<?php echo get_path('images/pop.png');?>>
+	<link rel="shortcut icon" type="image/x-icon" href=<?php echo get_path('images/pop.png');?>>
 	<meta property="og:title" content="Home">
 	<meta property="og:description" content="Meilleur site de l'univers.">
 	<meta property="og:image" content="">
