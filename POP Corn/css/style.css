@@ -375,3 +375,19 @@ input{
   padding-left: 90px; /* même taille que les étiquettes */
 
 }
+
+.icon {
+	padding: 20px;
+}
+
+.icon a i {
+	color: white;
+	font-size: 30px;
+	padding: 10px;
+	background-color: #070707;
+	transition: 0.3s;
+}
+
+.github a i:hover {
+	background-color: #337ab7;
+}
