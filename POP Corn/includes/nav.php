@@ -40,7 +40,7 @@
     </fieldset>
     <!-- 1: se connecter / 2: s'inscrire -->
     <input id="hiddeninput" type="hidden" name="type" value="1"/>
-    <a href="#" id="switchinscription" onclick="setInscription()">Je n'ai pas de compte<a>
+    <a href="#" id="switchinscription" onclick="setInscription()">Je n'ai pas de compte</a>
     </form>
   </div>
 
