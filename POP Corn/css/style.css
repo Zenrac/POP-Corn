@@ -375,3 +375,22 @@ input{
   padding-left: 90px; /* même taille que les étiquettes */
 
 }
+/*--------------------------------------gestion des tableau d'affichage-----------------------------------*/
+.tab{
+	margin-top: 50px;
+}
+
+input {
+    color: black;
+    padding: 4px;
+    margin-top: 2px;
+		margin-left: 10px;
+		margin-right: 10px;
+    border-radius: 10px;
+    text-align: center;
+    background: radial-gradient(circle, rgba(0,245,238,-1.9) 35%, rgba(255,0,134,0.1) 100%);
+}
+
+input.btt:hover{
+		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
+}
