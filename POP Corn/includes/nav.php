@@ -25,7 +25,7 @@
         <tbody>
           <tr>
             <td>Utilisateur: </td>
-            <td><input type="text" name="user" size="10" required minlength="2" maxlength="30"/></td>
+            <td><input type="text" name="user" size="10" autocomplete="off" required minlength="2" maxlength="30"/></td>
           </tr>
           <tr>
             <td>Mot de passe: </td>
