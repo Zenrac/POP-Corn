@@ -274,3 +274,43 @@ button:focus {outline:0;}
 input{
     color:black;
 }
+
+/*--------------------------------------gestion de la page music-----------------------------------*/
+.imgmus{
+	width: 90%;
+	height: 100%;
+}
+
+.imgmus img{
+	position: absolute;
+	top: 300px;
+	left:230px;
+	height: 350px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.imgmus ul {
+	position: absolute;
+	top: 295px;
+	left: 610px;
+	list-style:none;
+}
+
+.imgmus ul li {
+	margin-bottom: 50px;
+	text-align: justify;
+}
+.imgmus ul li p{
+	font-family: 'Lato-Regular', 'Helvetica Neueu', Helvetica, Arial, sans-serif;
+	font-size: 22px;
+	font-style: oblique;
+	font-style:bold;
+}
+.imgmus ul li p .lien{
+	font-family: 'Lato-Regular', 'Helvetica Neueu', Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	font-style: oblique;
+	font-style:bold;
+  float:right;
+}
