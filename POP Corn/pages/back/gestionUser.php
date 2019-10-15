@@ -14,7 +14,7 @@
 			$req = $cnx->query($req);
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
-				echo "<form name='liste' action='".$_SERVER['PHP_SELF']."' method='post'>";
+				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Modifier' value='Modifier'></input>
 								<input type='submit' name='Supprimer' value='Supprimer'></input>";
 				echo "<input type='text' name='numUser' value=".$donnees['numUser']." readonly>";
@@ -26,6 +26,12 @@
 				echo "<input type='text' name='Admin' value=".$donnees['Admin']." readonly>";
 				echo "</form>";
 			}
+
+
+
+
+
+
 
 			if (!empty($_POST['Modifier']))
 			{
@@ -79,6 +85,13 @@
 					$cnx=null;
 				}
 			}
+
+
+
+
+
+
+
 
 			if (!empty($_POST['Supprimer']))
 			{
