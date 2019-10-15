@@ -26,8 +26,8 @@
 	<meta name="keywords" content="voiture recherche modele">
 
 	<link href=<?php echo get_path('css/style.css');?> rel="stylesheet" type="text/css">
-	<link rel="icon" type="image/png" href=<?php echo get_path('images/logo.png');?> />
-	<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico"/>
+	<link rel="icon" type="image/png" href=<?php echo get_path('images/pop.png');?> />
+	<link rel="shortcut icon" type="image/x-icon" href=<?php echo get_path('images/pop.png');?>/>
 	<meta property="og:title" content="Home">
 	<meta property="og:description" content="Meilleur site de l'univers.">
 	<meta property="og:image" content="">
