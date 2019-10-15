@@ -10,7 +10,8 @@ function setInscription() {
     document.querySelector('#hiddeninput').value = '2';
     document.querySelector('#switchinscription').textContent = "J'ai déjà un compte.";
     document.querySelector('#connexionbutton').value = "S'inscrire";
-    document.getElementById('verifmdp').style.display = '';
+    document.getElementById('txtverifmdp').style.display = 'block';
+    document.getElementById('verifmdp').type = 'password';
   }
   // Connexion
   else {
@@ -18,7 +19,8 @@ function setInscription() {
     document.querySelector('#hiddeninput').value = '1';
     document.querySelector('#switchinscription').textContent = "Je n'ai pas de compte.";
     document.querySelector('#connexionbutton').value = "Connexion";
-    document.getElementById('verifmdp').style.display = 'none';
+    document.getElementById('txtverifmdp').style.display = 'none';
+    document.getElementById('verifmdp').type = 'hidden';
   }
 }
 

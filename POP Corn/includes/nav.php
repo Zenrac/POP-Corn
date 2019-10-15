@@ -31,9 +31,9 @@
             <td>Mot de passe: </td>
             <td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
           </tr>
-          <tr id="verifmdp" style="display: none;">
-            <td>Mot de passe: </td>
-            <td><input type="password" name="passwordverif" size="10" required minlength="2" maxlength="30"/></td>
+          <tr>
+            <td id="txtverifmdp" style="display: none;">Mot de passe: </td>
+            <td><input id="verifmdp" type="hidden" name="passwordverif" size="10" required minlength="2" maxlength="30"/></td>
           </tr>
           <tr>
             <td><input id="connexionbutton" type="submit" value="connexion"/></td>
