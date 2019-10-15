@@ -15,7 +15,6 @@
       </li>
     </ul>
   </li>
-  <?php echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>"; ?>
 
   <div id="admin-button" class=admin>
     <button class="" onclick="openForm()">Connexion</button>
@@ -33,6 +32,10 @@
             <td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
           </tr>
           <tr>
+            <td id="txtverifmdp" style="display: none;">Mot de passe: </td>
+            <td><input id="verifmdp" type="hidden" name="passwordverif" size="10" required minlength="2" maxlength="30"/></td>
+          </tr>
+          <tr>
             <td><input id="connexionbutton" type="submit" value="connexion"/></td>
           </tr>
         </tbody>
@@ -43,5 +46,14 @@
     <a href="#" id="switchinscription" onclick="setInscription()">Je n'ai pas de compte</a>
     </form>
   </div>
+  <?php
+        if(!empty($_SESSION['nom']))
+        {
+          echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>";
+          echo "<li><a href=".get_path('index.php?deconnexion=1')." name='deconnexion'>Deconnexion</a></li>";
+          echo "<script>hide_element('admin-button');</script>";
+        }
 
+
+  ?>
 </ul>

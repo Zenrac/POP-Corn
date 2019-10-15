@@ -68,7 +68,7 @@ nav ul li {
 	list-style-type: none;
 	font-size: x-large;
 	flex-grow: 1; /* Espace occupé va être élargi */
-	justify-content: space-around;
+	justify-content: center;
 }
 
 nav ul li:hover {
