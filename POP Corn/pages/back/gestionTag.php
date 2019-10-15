@@ -17,9 +17,9 @@
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Modifier' value='Modifier'></input>
 								<input type='submit' name='Supprimer' value='Supprimer'></input>";
-				echo "<input type='text' name='numTag' value=".$donnees['numTag']." readonly>";
+				echo "<input type='text' name='numTag' value='".$donnees['numTag']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='nomTag' value=".$donnees['nomTag']." readonly>";
+				echo "<input type='text' name='nomTag' value='".$donnees['nomTag']."' readonly>";
 				echo "</form>";
 			}
 
@@ -88,9 +88,9 @@
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Valider' value='Valider'></input>";
-				echo "<input type='text' name='numTag' value=".$_POST['numTag']." readonly>";
+				echo "<input type='text' name='numTag' value='".$_POST['numTag']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='nomTag' value=".$_POST['nomTag']." autocomplete='off' required minlength='2' maxlength='30'>";
+				echo "<input type='text' name='nomTag' value='".$_POST['nomTag']."' autocomplete='off' required minlength='2' maxlength='30'>";
 				echo "</form>";
 				  echo "<a href=".get_path('pages/back/gestionTag.php').">Retour arrière</a>";
 			}

@@ -17,13 +17,13 @@
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Modifier' value='Modifier'></input>
 								<input type='submit' name='Supprimer' value='Supprimer'></input>";
-				echo "<input type='text' name='numUser' value=".$donnees['numUser']." readonly>";
+				echo "<input type='text' name='numUser' value='".$donnees['numUser']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='pseudo' value=".$donnees['pseudo']." readonly>";
+				echo "<input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='mdpUser' value=".$donnees['mdpUser']." readonly>";
+				echo "<input type='text' name='mdpUser' value='".$donnees['mdpUser']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='Admin' value=".$donnees['Admin']." readonly>";
+				echo "<input type='text' name='Admin' value='".$donnees['Admin']."' readonly>";
 				echo "</form>";
 			}
 
@@ -37,13 +37,13 @@
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Valider' value='Valider'></input>";
-				echo "<input type='text' name='numUser' value=".$_POST['numUser']." readonly>";
+				echo "<input type='text' name='numUser' value='".$_POST['numUser']."' readonly>";
 				echo "  ";
-				echo "<input type='text' name='pseudo' value=".$_POST['pseudo']." autocomplete='off' required minlength='2' maxlength='30'>";
+				echo "<input type='text' name='pseudo' value='".$_POST['pseudo']."' autocomplete='off' required minlength='2' maxlength='30'>";
 				echo "  ";
-				echo "<input type='text' name='mdpUser' value=".$_POST['mdpUser']." autocomplete='off' required minlength='2' maxlength='30'>";
+				echo "<input type='text' name='mdpUser' value='".$_POST['mdpUser']."' autocomplete='off' required minlength='2' maxlength='30'>";
 				echo "  ";
-				echo "<input type='text' name='Admin' value=".$_POST['Admin']." autocomplete='off' required minlength='2' maxlength='30'>";
+				echo "<input type='text' name='Admin' value='".$_POST['Admin']."' autocomplete='off' required minlength='2' maxlength='30'>";
 				echo "</form>";
 				  echo "<a href=".get_path('pages/back/gestionUser.php').">Retour arrière</a>";
 			}
