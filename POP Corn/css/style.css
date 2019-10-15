@@ -380,7 +380,7 @@ input{
 	margin-top: 50px;
 }
 
-input {
+.tab input {
 		font-size: 1.2em;
 		width: auto;
     color: black;
@@ -392,7 +392,7 @@ input {
     text-align: center;
     background: radial-gradient(circle, rgba(0,245,238,-1.9) 35%, rgba(255,0,134,0.1) 100%);
 }
-input.btt{
+.tab input.btt{
 	margin-left: 0;
 	margin-right: 0;
 	padding-left: 10px;
@@ -400,6 +400,6 @@ input.btt{
 
 }
 
-input.btt:hover{
+.tab input.btt:hover{
 		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
 }
