@@ -9,14 +9,17 @@
 
 			include_once(get_path('outils/connexpdo.inc.php'));
 			$cnx=connexpdo('bdpopcorn','myparam');
+		?>
+	<div class="tab">
+		<?php
 
 			$req="	SELECT * FROM utilisateur";
 			$req = $cnx->query($req);
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Modifier' value='Modifier'></input>
-								<input type='submit' name='Supprimer' value='Supprimer'></input>";
+				echo "	<input type='submit' name='Modifier' value='Modifier' class='btt'></input>
+								<input type='submit' name='Supprimer' value='Supprimer' class='btt'></input>";
 				echo "<input type='text' name='numUser' value='".$donnees['numUser']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly>";
@@ -27,16 +30,10 @@
 				echo "</form>";
 			}
 
-
-
-
-
-
-
 			if (!empty($_POST['Modifier']))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Valider' value='Valider'></input>";
+				echo "	<input type='submit' name='Valider' value='Valider' class='btt'></input>";
 				echo "<input type='text' name='numUser' value='".$_POST['numUser']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='pseudo' value='".$_POST['pseudo']."' autocomplete='off' required minlength='2' maxlength='30'>";
@@ -87,12 +84,6 @@
 			}
 
 
-
-
-
-
-
-
 			if (!empty($_POST['Supprimer']))
 			{
 				$numUser = "";
@@ -107,6 +98,9 @@
 			}
 
 
+		?>
+	</div>
+		<?php
 			include_once ('../../includes/footer.php');
 		?>
 
