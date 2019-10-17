@@ -27,3 +27,7 @@ function setInscription() {
 function hide_element(id) {
   document.getElementById(id).outerHTML = '';
 }
+
+function setFooter() {
+    document.querySelector('footer').style.position = (document.querySelector('.musictop') != null) ? 'relative' : 'fixed';
+}
