@@ -16,7 +16,7 @@
 			//where year(anneeAlbum) = 2019
 
 			$req="	SELECT titre, duree, top, numMusique FROM musique m inner join album a on m.numAlbum = a.numAlbum
-			where year(anneeAlbum) = 2019 order by top desc";
+			where year(anneeAlbum) = 2019 order by top desc, titre";
 			$req = $cnx->query($req);
 
 			echo "<div class='musictop'>";
