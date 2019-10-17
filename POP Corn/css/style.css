@@ -391,3 +391,11 @@ input{
 .github a i:hover {
 	background-color: #337ab7;
 }
+
+#searchbar {
+	margin-top: 50px;
+}
+
+.ui-autocomplete {
+	position: relative;
+}
