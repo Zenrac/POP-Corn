@@ -29,5 +29,5 @@ function hide_element(id) {
 }
 
 function setFooter() {
-    document.querySelector('footer').style.position = (document.querySelector('.musictop') != null) ? 'relative' : 'fixed';
+    document.querySelector('footer').style.position = (document.querySelector('.bodyelement') != null) ? 'relative' : 'fixed';
 }

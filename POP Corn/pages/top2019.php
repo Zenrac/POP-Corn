@@ -19,7 +19,7 @@
 			where year(anneeAlbum) = 2019 order by top desc";
 			$req = $cnx->query($req);
 
-			echo "<div class='musictop'>";
+			echo "<div class='bodyelement musictop'>";
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				$duree = gmdate("i:s", $donnees['duree']/1000);

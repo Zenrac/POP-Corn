@@ -24,50 +24,51 @@
 					inner join album a on m.numAlbum = a.numAlbum
 					inner join ecrire e on m.numMusique = e.numMusique
 					inner join Auteur au on e.numAuteur = au.numAuteur
-					where m.numMusique = '".$_GET['id']."'";
+					where m.numMusique = '".$_GET['id']."'
+					GROUP BY au.nom;";
 
 					$req = $cnx->query($req);
 
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-					{
-							date_default_timezone_set('Europe/Paris');
-							$duree = gmdate("i:s", $donnees['duree']/1000);
-							$date = date("Y", strtotime($donnees['anneeAlbum']));
-							echo $donnees['numMusique'];
+					$elems = $req->fetchAll();
 
-						echo "<div class='musictop'><div class='imgmus'>
-				        	<img src=".$donnees['imageAlbum']." alt='Image de album'>
-				        	<ul>";
-						echo "<li><p>Titre : </p><p class = lien> ".$donnees['titre']." </p></li>";
-						echo "<li><p>Durée : </p><p class = lien> ".$duree."min </p></li>";
+					$donnees = $elems[0];
+		 			echo "<div class='bodyelement musictop'>";
 
-						echo "<li><p>Artiste : </p><p class = lien> ".$donnees['nom']." ";
-						if ($donnees['prenom'] != "null") {echo $donnees['prenom']." </p></li>";}
+					date_default_timezone_set('Europe/Paris');
+					$duree = gmdate("i:s", $donnees['duree']/1000);
+					$date = date("Y", strtotime($donnees['anneeAlbum']));
 
-						if ($donnees['titre'] != $donnees['nomAlbum']){echo "<li><p>Album : </p><p class = lien> ".$donnees['nomAlbum']." </p></li>";}
-						echo "<li><p>Année : </p><p class = lien> ".$date." </p></li>";
-						echo "</ul></div></div>";
+					echo "<div class='bodyelement musictop'><div class='imgmus'>
+		        	<img src=".$donnees['imageAlbum']." alt='Image de album'></div>
+		        	<ul class='music info'>";
+					echo "<li><p>Titre : </p><p class = lien> ".$donnees['titre']." </p></li>";
+					echo "<li><p>Durée : </p><p class = lien> ".$duree."min </p></li>";
+
+					echo "<li><p>Artiste : </p><p class = lien>";
+
+					foreach ($elems as $donnee) {
+						echo $donnee['nom'];
+						if ($donnee['prenom'] != "null")
+						{
+							echo " " . $donnee['prenom'];
+						}
+						echo "<br>";
 					}
+					echo "</li></p>";
+					if ($donnees['titre'] != $donnees['nomAlbum'])
+					{
+						echo "<li><p>Album : </p><p class = lien> ".$donnees['nomAlbum']." </p></li>";
+					}
+					echo "<li><p>Année : </p><p class = lien> ".$date." </p></li>";
+					echo "</ul></div>";
+
+					echo "</div>";
 				}
-
-
-
-
-
-
-
 			}
 		?>
 
-
     <div class="des">
-
-
     </div>
-
-
-
-
 
 		<?php
 			include_once '../includes/footer.php';
