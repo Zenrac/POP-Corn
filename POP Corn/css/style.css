@@ -375,6 +375,7 @@ input{
   padding-left: 90px; /* même taille que les étiquettes */
 
 }
+
 /*--------------------------------------gestion des tableau d'affichage-----------------------------------*/
 .tab{
 	margin-top: 50px;
@@ -402,4 +403,21 @@ input{
 
 .tab input.btt:hover{
 		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
+
+/*--------------------------------------gestion de l'icone du footer-----------------------------------*/
+  
+.icon {
+	padding: 20px;
+}
+
+.icon a i {
+	color: white;
+	font-size: 30px;
+	padding: 10px;
+	background-color: #070707;
+	transition: 0.3s;
+}
+
+.github a i:hover {
+	background-color: #337ab7;
 }
