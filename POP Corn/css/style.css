@@ -435,13 +435,15 @@ input{
 }
 
 .autocomplete {
-	padding: 30px;
+	padding: 10px;
 	background-color: rgb(0,0,0);
 	width: 350px;
 	margin-top: 30px;
 	display: flex;
 	flex-direction: column;
+
 }
+
 
 .autocomplete span {
 	color: white;
