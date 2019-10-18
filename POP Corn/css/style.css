@@ -34,6 +34,10 @@ header {
 	background: radial-gradient(circle, rgba(0,245,238,0.527345972568715) 35%, rgba(255,0,134,0.5329482134650736) 100%);
 }
 
+ol, ul {
+	margin-bottom: 0px;
+}
+
 h4 {
 	text-align: center;
 	color: #0082A7;
@@ -276,24 +280,13 @@ input{
 }
 
 /*--------------------------------------gestion de la page music-----------------------------------*/
-.imgmus{
-	width: 90%;
-	height: 100%;
-}
 
 .imgmus img{
-	position: absolute;
-	top: 300px;
-	left:230px;
-	height: 350px;
-	margin-top: auto;
-	margin-bottom: auto;
+	float: right;
+	width: 200px;
 }
 
 .imgmus ul {
-	position: absolute;
-	top: 295px;
-	left: 610px;
 	list-style:none;
 }
 
@@ -401,11 +394,11 @@ input{
 
 }
 
-.tab input.btt:hover{
+.tab input.btt:hover {
 		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
-
+}
 /*--------------------------------------gestion de l'icone du footer-----------------------------------*/
-  
+
 .icon {
 	padding: 20px;
 }
@@ -420,4 +413,17 @@ input{
 
 .github a i:hover {
 	background-color: #337ab7;
+}
+
+#searchbar {
+	margin-top: 50px;
+}
+
+.ui-autocomplete {
+	position: relative;
+}
+
+.musictop {
+
+	margin: auto;
 }
