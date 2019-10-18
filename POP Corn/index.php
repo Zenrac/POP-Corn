@@ -71,7 +71,10 @@
 		</script>
 		<div class="autocomplete">
 			<span>Recherche:</span>
-			<input id="searchbar">
+			<div class=searchbarwithbutton>
+				<input id="searchbar">
+				<input id="recherchebutton" type="submit" value="Rechercher"/>
+			</div>
 		</div>
 		<?php
 			include_once './includes/footer.php';
