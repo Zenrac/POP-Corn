@@ -58,6 +58,9 @@
 				};
 			?>
 	</nav>
+	<script>
+		setCurrentPage()
+	</script>
 </header>
 
 <!--Verifier connexion-->

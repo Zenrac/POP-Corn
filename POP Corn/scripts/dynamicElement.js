@@ -38,29 +38,46 @@ jQuery(document).ready(function($) {
       if (footerTop < docHeight) {
           footerSelector.css("margin-top", (docHeight - footerTop) + "px");
       }
-  }
-  // Quand la page charge
-  footerAlwayInBottom($("#footer"));
-  // Quand la page change de taille
-  $(window).resize(function() {
-      footerAlwayInBottom($("#footer"));
-  });
-});
-
-jQuery(document).ready(function($) {
+  };
   /**
-   * Met le footer en bas de la page
+   * Cache les resultats de l'autocompletion si il y a des changements de taille
    */
-  function hideAutocompleteOnChanges(footerSelector) {
+  function hideAutocompleteOnChanges() {
       var element = document.querySelector('.ui-menu');
       if (element != null) {
         element.style.display = 'none';
       }
-  }
+  };
+  /**
+   * Cache les resultats de l'autocompletion si il y a des changements de taille
+   */
+  function responsiveConnexion() {
+    $('#connexion').width($('#admin-button').width() - 50);
+    // Je retire 50px parce qu'il y a un padding de 25px à droite et à gauche
+  };
+
   // Quand la page charge
+  footerAlwayInBottom($("#footer"));
   hideAutocompleteOnChanges();
+  responsiveConnexion();
   // Quand la page change de taille
   $(window).resize(function() {
+      footerAlwayInBottom($("#footer"));
       hideAutocompleteOnChanges();
+      responsiveConnexion();
   });
 });
+
+function setCurrentPage() {
+  var active = document.getElementById(location.pathname.split('/').slice(-1)[0])
+  if (active != null) {
+    active.classList.add('active');
+    var parent = document.getElementById('deroul')
+    if (parent != null && parent.contains(active)) {
+      var parent_text = document.getElementById('tops')
+      if (parent_text != null) {
+        parent_text.classList.add('active');
+      }
+    }
+  }
+}

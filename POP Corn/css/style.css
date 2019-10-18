@@ -63,7 +63,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-	text-decoration: none !important;
+	text-decoration: none;
 	color: white;
 }
 
@@ -88,12 +88,16 @@ footer {
 	clear: both;
 	display: flex;
 	overflow: hidden;
+	justify-content: space-evenly;
 }
 
 footer h3 {
 	color: white;
 	text-align: center;
 	margin: 20px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 button {
@@ -164,6 +168,7 @@ button:focus {outline:0;}
 	width: 30%;
 	color: white;
 	text-align: justify;
+	justify-content: center;
 }
 
 .deroul, .deroul ul{
@@ -176,6 +181,11 @@ button:focus {outline:0;}
 .deroul li{
 	display:inline-block;
 	position:relative;
+	width: 100%;
+}
+
+.deroul li a {
+	width: 100%;
 }
 
 .deroul ul li{
@@ -229,6 +239,7 @@ button:focus {outline:0;}
 .admin {
 	color: white;
 	text-align: center;
+	flex-grow: 0.2;
 	/* top: 0px;
 	right: 0px;
 	position: absolute; */
@@ -249,18 +260,27 @@ button:focus {outline:0;}
 	margin: auto;
 	padding: 25px;
 	display: none;
+	right: 0;
+	transition: 0.5s;
+	z-index: 42;
 }
 
 .connexadmin fieldset {
-	border: none;
+	display: flex;
+	padding: 10px;
+	flex-direction: column;
 }
 
-.connexadmin fieldset table {
+.connexadmin fieldset span {
+	padding-bottom: 10px;
+	width: 100%;
 	height: 100%;
 }
 
-.connexadmin fieldset table tbody tr td {
-	color: white;
+.connexadmin fieldset input {
+	width: 100%;
+	height: 100%;
+	margin-bottom: 10px;
 }
 
 .center-full-text {
@@ -397,6 +417,9 @@ input{
 
 .icon {
 	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .icon a i {
@@ -412,11 +435,15 @@ input{
 }
 
 .autocomplete {
-	padding: 30px;
+	padding: 10px;
 	background-color: rgb(0,0,0);
 	width: 350px;
 	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+
 }
+
 
 .autocomplete span {
 	color: white;
@@ -425,4 +452,46 @@ input{
 
 #searchbar {
 	width: 100%;
+}
+
+.connextitle {
+	color: white;
+}
+
+@media screen and (max-width: 550px)
+{
+	footer {
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	.icon {
+		flex-direction: row;
+	}
+
+	nav a, nav button {
+		font-size: 15px;
+	}
+
+	.autocomplete {
+		width: 200px;
+	}
+
+	.connextitle {
+		font-size: 15px;
+	}
+}
+
+.active {
+	font-weight: bold !important;
+	color: #8B008B !important;
+}
+
+#actualiserBDD {
+	margin-top: 30px;
+	width: 30%;
+}
+
+.searchbarwithbutton {
+	display: flex;
 }
