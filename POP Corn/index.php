@@ -32,6 +32,25 @@
 			  $instance = new recherche();
 				$instance->funcrecherche();
 
+		?>
+		<script>
+  		$( function() {
+				var allTags = `<?php echo $arr; ?>`;
+    		var availableTags = allTags.split('|');
+				$( "#searchbar" ).autocomplete({
+				source: availableTags,
+				minLength:2,
+			});
+			});
+		</script>
+		<div class="autocomplete">
+			<span>Recherche:</span>
+			<div class=searchbarwithbutton>
+				<input id="searchbar">
+				<input id="recherchebutton" type="submit" value="Rechercher"/>
+			</div>
+		</div>
+		<?php
 
 			include_once './includes/footer.php';
 		?>

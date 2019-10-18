@@ -67,3 +67,17 @@ jQuery(document).ready(function($) {
       responsiveConnexion();
   });
 });
+
+function setCurrentPage() {
+  var active = document.getElementById(location.pathname.split('/').slice(-1)[0])
+  if (active != null) {
+    active.classList.add('active');
+    var parent = document.getElementById('deroul')
+    if (parent != null && parent.contains(active)) {
+      var parent_text = document.getElementById('tops')
+      if (parent_text != null) {
+        parent_text.classList.add('active');
+      }
+    }
+  }
+}
