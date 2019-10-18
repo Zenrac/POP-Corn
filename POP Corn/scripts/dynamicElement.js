@@ -28,6 +28,39 @@ function hide_element(id) {
   document.getElementById(id).outerHTML = '';
 }
 
-function setFooter() {
-    document.querySelector('footer').style.position = (document.querySelector('.bodyelement') != null) ? 'relative' : 'fixed';
-}
+jQuery(document).ready(function($) {
+  /**
+   * Met le footer en bas de la page
+   */
+  function footerAlwayInBottom(footerSelector) {
+      var docHeight = $(window).height();
+      var footerTop = footerSelector.position().top + footerSelector.height();
+      if (footerTop < docHeight) {
+          footerSelector.css("margin-top", (docHeight - footerTop) + "px");
+      }
+  }
+  // Quand la page charge
+  footerAlwayInBottom($("#footer"));
+  // Quand la page change de taille
+  $(window).resize(function() {
+      footerAlwayInBottom($("#footer"));
+  });
+});
+
+jQuery(document).ready(function($) {
+  /**
+   * Met le footer en bas de la page
+   */
+  function hideAutocompleteOnChanges(footerSelector) {
+      var element = document.querySelector('.ui-menu');
+      if (element != null) {
+        element.style.display = 'none';
+      }
+  }
+  // Quand la page charge
+  hideAutocompleteOnChanges();
+  // Quand la page change de taille
+  $(window).resize(function() {
+      hideAutocompleteOnChanges();
+  });
+});
