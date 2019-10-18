@@ -20,26 +20,16 @@
     <button class="" onclick="openForm()">Connexion</button>
     <form id="connexion" class="connexadmin" action="<?= $_SERVER['PHP_SELF'] ?>" method="post" >
     <fieldset>
-      <legend><b>Saisir vos identifiants</b></legend>
-      <table>
-        <tbody>
-          <tr>
-            <td>Utilisateur: </td>
-            <td><input type="text" name="user" size="10" autocomplete="off" required minlength="2" maxlength="30"/></td>
-          </tr>
-          <tr>
-            <td>Mot de passe: </td>
-            <td><input type="password" name="password" size="10" required minlength="2" maxlength="30"/></td>
-          </tr>
-          <tr>
-            <td id="txtverifmdp" style="display: none;">Mot de passe: </td>
-            <td><input id="verifmdp" type="hidden" name="passwordverif" size="10" required minlength="2" maxlength="30"/></td>
-          </tr>
-          <tr>
-            <td><input id="connexionbutton" type="submit" value="connexion"/></td>
-          </tr>
-        </tbody>
-      </table>
+      <legend class="connextitle"><b>Saisir vos identifiants</b></legend>
+        <span>Utilisateur:</span>
+        <input type="text" name="user" size="10" autocomplete="off" required minlength="2" maxlength="30"/>
+        <span>Mot de passe:</span>
+        <input type="password" name="password" size="10" required minlength="2" maxlength="30"/>
+
+        <span id="txtverifmdp" style="display: none;">Mot de passe à nouveau:</span>
+        <input id="verifmdp" type="hidden" name="passwordverif" size="10" required minlength="2" maxlength="30"/>
+
+        <input id="connexionbutton" type="submit" value="connexion"/>
     </fieldset>
     <!-- 1: se connecter / 2: s'inscrire -->
     <input id="hiddeninput" type="hidden" name="type" value="1"/>

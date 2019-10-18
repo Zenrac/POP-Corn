@@ -229,6 +229,7 @@ button:focus {outline:0;}
 .admin {
 	color: white;
 	text-align: center;
+	flex-grow: 0.2;
 	/* top: 0px;
 	right: 0px;
 	position: absolute; */
@@ -249,18 +250,22 @@ button:focus {outline:0;}
 	margin: auto;
 	padding: 25px;
 	display: none;
+	right: 0;
+	transition: 0.5s;
 }
 
 .connexadmin fieldset {
-	border: none;
+	display: flex;
+	padding: 10px;
 }
 
-.connexadmin fieldset table {
-	height: 100%;
+.connexadmin fieldset span {
+	padding-bottom: 10px;
 }
 
-.connexadmin fieldset table tbody tr td {
-	color: white;
+.connexadmin fieldset input {
+	width: 100%;
+	margin-bottom: 10px;
 }
 
 .center-full-text {
@@ -425,4 +430,8 @@ input{
 
 #searchbar {
 	width: 100%;
+}
+
+.connextitle {
+	color: white;
 }
