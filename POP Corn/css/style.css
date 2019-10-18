@@ -229,7 +229,6 @@ button:focus {outline:0;}
 .admin {
 	color: white;
 	text-align: center;
-	width: 230px;
 	/* top: 0px;
 	right: 0px;
 	position: absolute; */
@@ -413,11 +412,10 @@ input{
 }
 
 .autocomplete {
-	width: 20%;
 	padding: 30px;
 	background-color: rgb(0,0,0);
-	width: 20%;
-	margin-top: 10px;
+	width: 350px;
+	margin-top: 30px;
 }
 
 .autocomplete span {
