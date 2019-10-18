@@ -65,15 +65,16 @@
     		var availableTags = allTags.split('|');
 				$( "#searchbar" ).autocomplete({
 				source: availableTags,
-				minLength:3
+				minLength:2,
 			});
 			});
 		</script>
 		<div class="autocomplete">
+			<span>Recherche:</span>
 			<input id="searchbar">
-			<?php
-				include_once './includes/footer.php';
-			?>
 		</div>
+		<?php
+			include_once './includes/footer.php';
+		?>
 	</body>
 </html>

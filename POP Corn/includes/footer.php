@@ -1,5 +1,4 @@
-<footer>
-	<script>setFooter()</script>
+<footer id=footer>
 	<div class=infos>
 
 		<div class=quisommenous>

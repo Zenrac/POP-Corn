@@ -30,9 +30,9 @@
 					$duree = gmdate("i:s", $donnees['duree']/1000);
 					$date = date("Y", strtotime($donnees['anneeAlbum']));
 
-					echo "<div class='bodyelement musictop'><div class='imgmus'>
-		        	<img src=".$donnees['imageAlbum']." alt='Image de album'></div>
-		        	<ul class='music info'>";
+					echo "<div class='musicinfos'>
+		        	<img class=musicimg src=".$donnees['imageAlbum']." alt='Image de album'>
+		        	<ul class='musictxt'>";
 					echo "<li><p>Titre : </p><p class = lien> ".$donnees['titre']." </p></li>";
 					echo "<li><p>Durée : </p><p class = lien> ".$duree."</p></li>";
 
