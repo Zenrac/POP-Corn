@@ -1,15 +1,15 @@
 <ul>
   <?php
-    echo "<li><a href=".get_path('index.php').">Accueil</a></li>";
+    echo "<li><a id='index.php' href=".get_path('index.php').">Accueil</a></li>";
   ?>
   <li>
-    <ul class="deroul">
+    <ul id=deroul class="deroul">
       <li>
-        <a href="#">Tops</a>
+        <a id="tops" href="#">Tops</a>
         <ul>
           <?php
-            echo "<li><a href=".get_path('pages/top2019.php').">Top 2019</a></li>";
-            echo "<li><a href=".get_path('pages/top2018.php').">Top 2018</a></li>";
+            echo "<li><a id='top2019.php' href=".get_path('pages/top2019.php').">Top 2019</a></li>";
+            echo "<li><a id='top2018.php' href=".get_path('pages/top2018.php').">Top 2018</a></li>";
           ?>
         </ul>
       </li>
