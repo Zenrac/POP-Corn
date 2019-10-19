@@ -1,6 +1,7 @@
 <ul>
   <?php
     echo "<li><a id='index.php' href=".get_path('index.php').">Accueil</a></li>";
+    echo "<li><a id='index.php' href=".get_path('pages/ttmusique.php').">Musique</a></li>";
   ?>
   <li>
     <ul id=deroul class="deroul">

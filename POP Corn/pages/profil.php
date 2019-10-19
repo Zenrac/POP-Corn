@@ -64,8 +64,8 @@
 					{
 						echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 						echo "	<input type='submit' name='Modifier' value='Modifier' class='btt'></input>
-										<input type='submit' name='Supprimer' value='Supprimer' class='btt'></input>
-										<input type='submit' name='lecture' value='Voir playlist' class='btt'></input>";
+										<input type='submit' name='Supprimer' value='Supprimer' class='btt'></input>";
+						echo '<a href='.get_path('pages/playlist.php?id='.$donnees['numPlaylist']).'>Voir playlist</a>';
 						echo "<input type='hidden' name='numPlaylist' value='".$donnees['numPlaylist']."' readonly>";
 						echo "<input type='text' name='nom' value='".$donnees['nom']."' size = '4' readonly>";
 						echo "  ";
