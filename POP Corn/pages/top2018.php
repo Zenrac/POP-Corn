@@ -20,10 +20,10 @@
 
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo "	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btt'></input>";
+				echo "	<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btt'></input>";
 				echo "<input type='text' name='top' value='".$donnees['top']."' size = '4' readonly>";
 				echo "  ";
 				echo '<a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a>';
-
 				echo "  ";
 				echo "<input type='text' name='duree' value='".$duree."' size='4' readonly>";
 
