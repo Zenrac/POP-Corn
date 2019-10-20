@@ -13,6 +13,9 @@
 	<!-- Axios -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+	<!-- sweetalert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
