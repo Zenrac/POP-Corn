@@ -66,7 +66,6 @@
 				{
 					$num = $cnx->quote($_POST['numMusique']);
 					$rep = "INSERT INTO contenir values (".$val.",".$num.")";
-					var_dump($rep);
 					$cnx->exec($rep);
 				}
 			}
