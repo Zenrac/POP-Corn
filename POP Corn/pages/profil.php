@@ -121,6 +121,8 @@
 				{
 					$playlist = "";
 					$playlist = $cnx->quote($_POST['numPlaylist']);
+					$req2="	Delete from contenir where numPlaylist = ".$playlist;
+					$cnx->exec($req2);
 					$req="	Delete from playlist where numPlaylist = ".$playlist;
 					$cnx->exec($req);
 
