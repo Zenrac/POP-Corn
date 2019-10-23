@@ -9,7 +9,7 @@
 			$cnx=connexpdo('bdpopcorn','myparam');
 
 			$req="	SELECT titre, duree, top, numMusique FROM musique m inner join album a on m.numAlbum = a.numAlbum
-			where year(anneeAlbum) = 2019 order by top desc, titre";
+			where year(anneeAlbum) = 2019 order by top, titre";
 			$req = $cnx->query($req);
 
 			echo "<div class='bodyelement musictop'>";
