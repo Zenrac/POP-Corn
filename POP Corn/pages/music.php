@@ -7,7 +7,7 @@
 			//fonction de deconnexion pour le salarie
 			if (isset($_GET['id']))
 			{
-				$req="	SELECT DISTINCT m.titre, m.duree, au.nom, au.prenom, a.nomAlbum, a.imageAlbum, a.anneeAlbum, m.numMusique
+				$req="	SELECT DISTINCT m.titre, m.duree, au.nom, au.prenom, a.nomAlbum, a.imageAlbum, a.anneeAlbum, m.numMusique, a.numAlbum
 				FROM Musique m
 				INNER JOIN Album a on m.numAlbum = a.numAlbum
 				INNER JOIN Ecrire e on m.numMusique = e.numMusique
@@ -75,6 +75,8 @@
 
 					echo "</ul></div>";
 					echo "</div>";
+					echo '<iframe src="https://open.spotify.com/embed/album/'.$donnees['numAlbum'].'" width="300" height="80" frameborder="0"
+						 allowtransparency="true" allow="encrypted-media"></iframe>';
 
 					echo "<form action='".$_SERVER['PHP_SELF']."?id=".$donnees['numMusique']."' method='post'>";
 					echo "	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btt'></input><br />";
