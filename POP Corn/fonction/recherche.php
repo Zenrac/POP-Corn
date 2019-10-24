@@ -48,6 +48,6 @@ class recherche
     });
     });
     </script>
-    <input id='searchbar'>";
+    <input id='searchbar' name='barre'>";
   }
 }
