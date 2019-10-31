@@ -403,3 +403,12 @@ input{
 .tab input.btt:hover{
 		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
 }
+/*--------------------------------------gestion du texte de la page info-----------------------------------*/
+.nous{
+	width: 60%;
+	margin-top: 100px;
+	text-align: center;
+}
+.nous p{
+	font-size: 1.5em;
+}
