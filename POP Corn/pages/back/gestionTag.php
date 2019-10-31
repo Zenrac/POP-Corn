@@ -15,8 +15,8 @@
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Modifier' value='Modifier'></input>
-								<input type='submit' name='Supprimer' value='Supprimer'></input>";
+				echo "	<input type='submit' name='Modifier' value='Modifier' class='btt'></input>
+								<input type='submit' name='Supprimer' value='Supprimer' class='btt'></input>";
 				echo "<input type='text' name='numTag' value='".$donnees['numTag']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='nomTag' value='".$donnees['nomTag']."' readonly>";

@@ -1,7 +1,4 @@
-<?php
-	echo "<footer class=" . ((isset($_POST['table'])) ? "" : "fixed") . ">";
-?>
-
+<footer id=footer>
 	<div class=infos>
 
 		<div class=quisommenous>
@@ -39,5 +36,11 @@
 	<h3>
 		Meilleur site de l'univers by Pop'Corn INC.
 	</h3>
+
+	<div class="icon github">
+		<a href="https://github.com/ZenCz/POP-Corn">
+			<i class="fa fa-github"></i>
+		</a>
+	</div>
 
 </footer>

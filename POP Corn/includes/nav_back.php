@@ -1,14 +1,14 @@
 <ul>
   <?php
-    echo "<li><a href=".get_path('pages/back/indexAdmin.php').">Accueil</a></li>";
+    echo "<li><a id='indexAdmin.php' href=".get_path('pages/back/indexAdmin.php').">Accueil</a></li>";
     echo '
     <li>
-    <ul class="deroul">
+    <ul id="deroul" class="deroul">
       <li>
-        <a href="#">Gestion</a>
+        <a id="tops" href="#">Gestion</a>
         <ul>
-        <li><a href='.get_path('pages/back/gestionUser.php').'>Utilisateur</a></li>
-        <li><a href='.get_path('pages/back/gestionTag.php').'>Tag</a></li>
+        <li><a id="gestionUser.php" href='.get_path('pages/back/gestionUser.php').'>Utilisateur</a></li>
+        <li><a id="gestionTag.php" href='.get_path('pages/back/gestionTag.php').'>Tag</a></li>
         </ul>
       </li>
     </ul>
