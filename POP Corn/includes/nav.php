@@ -1,6 +1,7 @@
 <ul>
   <?php
     echo "<li><a id='index.php' href=".get_path('index.php').">Accueil</a></li>";
+    echo "<li><a id='index.php' href=".get_path('pages/ttmusique.php').">Musique</a></li>";
   ?>
   <li>
     <ul id=deroul class="deroul">
@@ -15,28 +16,8 @@
       </li>
     </ul>
   </li>
-  <li>
-    <ul class="deroul">
-      <li>
-        <a href="#">Rechercher</a>
-        <ul>
-          <?php
-          include_once(get_path('outils/connexpdo.inc.php'));
-          $cnx = connexpdo('bdpopcorn','myparam');
-              include_once(get_path('fonction/recherche.php'));
-            $instance = new recherche();
-            echo "<style>.test:hover{background-color: black;}
-                        .test {color:white; align-items:center; flex-grow:0;}
-              </style>";
-          echo "<li class = 'test'>";
-            $instance->funcrecherche();
-            echo "</li>";
-            echo "<li><a href=".get_path('pages/avance.php').">Recherche avancée</a></li>";
-          ?>
-        </ul>
-      </li>
-    </ul>
-  </li>
+
+
 
 
 

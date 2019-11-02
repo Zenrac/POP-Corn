@@ -44,12 +44,10 @@ class recherche
       var availableTags = allTags.split('|');
       $( '#searchbar' ).autocomplete({
       source: availableTags,
-      minLength:3
+      minLength:2
     });
     });
     </script>
-    <div class='autocomplete'>
-    <input id='searchbar'>
-    </div> ";
+    <input id='searchbar' name='barre'>";
   }
 }
