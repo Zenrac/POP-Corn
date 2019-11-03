@@ -72,10 +72,22 @@
 					$req = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -90,10 +102,22 @@
 					$req = "SELECT DISTINCT * from posseder p inner join musique m on p.numMusique = m.numMusique where numTag = ".$_POST['tag'];
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT DISTINCT * from posseder p inner join musique m on p.numMusique = m.numMusique where numTag = ".$_POST['tag'];
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -108,10 +132,22 @@
 					$req = "SELECT DISTINCT * from ecrire e inner join musique m on e.numMusique = m.numMusique where numAuteur = '".$_POST['auteur']."'";
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT DISTINCT * from ecrire e inner join musique m on e.numMusique = m.numMusique where numAuteur = '".$_POST['auteur']."'";
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -126,17 +162,30 @@
 					if ($_POST['duree'] == 'courte')
 					{
 						$req = "SELECT * from musique where duree < 180000";
+						$req2 = "SELECT * from musique where duree < 180000";
 					}
 					else
 					{
 						$req = "SELECT * from musique where duree > 180000";
+						$req2 = "SELECT * from musique where duree > 180000";
 					}
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
