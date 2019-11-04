@@ -75,21 +75,29 @@
 
 					echo "</ul></div>";
 					echo "</div>";
-					echo '<iframe src="https://open.spotify.com/embed/album/'.$donnees['numAlbum'].'" width="300" height="80" frameborder="0"
+					echo '<iframe src="https://open.spotify.com/embed/album/'.$donnees['numAlbum'].'" width="50%" height="80" frameborder="0"
 						 allowtransparency="true" allow="encrypted-media"></iframe>';
 
+					echo "<div class='buttons'>";
 					echo "<form action='".$_SERVER['PHP_SELF']."?id=".$donnees['numMusique']."' method='post'>";
-					echo "	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btt'></input><br />";
-					echo "	<input type='submit' name='AjTag' value='Ajouter un tag' class='btt'></input>";
-					echo "	<input type='submit' name='SupTag' value='Supprimer un tag' class='btt'></input>";
-					echo "	<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btt'></input>";
+					echo "<input class='btnopt btn btn-secondary btn-sm btn-block' type='submit' name='Playlist' value='Ajouter à la playlist'></input>";
+					echo "<input class='btnopt btn btn-secondary btn-sm btn-block' type='submit' name='AjTag' value='Ajouter un tag'></input>";
+					echo "<input class='btnopt btn btn-secondary btn-sm btn-block' type='submit' name='SupTag' value='Supprimer un tag'></input>";
+					echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."'></input>";
 					echo "</form>";
+					echo "</div>";
 				}
 			}
 
 			if (!empty($_POST['Playlist']) && empty($_SESSION['nom']))
 			{
-				echo "<script type='text/javascript'> alert('Vous devez vous connecter pour ajouter à votre playlist !')</script>";
+				echo "<script type='text/javascript'>
+				Swal.fire({
+			    type: 'error',
+			    title: 'Vous n\'êtes pas connecté!',
+			    text: 'Vous devez être connecté pour ajouter des musiques à votre playlist.',
+			  })
+			  </script>";
 			}
 			elseif(!empty($_POST['Playlist']))
 			{
@@ -132,7 +140,13 @@
 
 			if (!empty($_POST['AjTag']) && empty($_SESSION['nom']))
 			{
-				echo "<script type='text/javascript'> alert('Vous devez vous connecter pour ajouter un tag a la musique !')</script>";
+				echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Vous n\'êtes pas connecté!',
+						text: 'Vous devez être connecté pour ajouter un tag à la musique !',
+					});
+				</script>";
 			}
 			elseif(!empty($_POST['AjTag']))
 			{
@@ -176,7 +190,13 @@
 
 			if (!empty($_POST['SupTag']) && empty($_SESSION['nom']))
 			{
-				echo "<script type='text/javascript'> alert('Vous devez vous connecter pour supprimer un tag a la musique !')</script>";
+				echo "<script type='text/javascript'>
+				Swal.fire({
+			    type: 'error',
+			    title: 'Vous n\'êtes pas connecté!',
+			    text: 'Vous devez être connecté pour supprimer un tag à la musique.',
+			  })
+			  </script>";
 			}
 			elseif(!empty($_POST['SupTag']))
 			{

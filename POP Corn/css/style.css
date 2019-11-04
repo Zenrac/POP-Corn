@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 * {
 	font-family: 'Lato-Regular', 'Helvetica Neueu', Helvetica, Arial, sans-serif;
 	margin: 0;
@@ -23,7 +25,7 @@ body {
 	align-items: center;
 	width: 100%;
 	background-color: #0082A7;
-	background:linear-gradient( rgba(0, 0, 0, 0.75) 100%, rgba(255, 255, 255, 0.25) 100%);
+	background:linear-gradient( rgba(0, 0, 0, 0.90) 100%, rgba(255, 255, 255, 0.25) 100%);
 }
 
 header {
@@ -234,7 +236,10 @@ button:focus {outline:0;}
 	color:white;
 }
 
-
+.bodyelement {
+	width: 75%;
+	margin: 20px;
+}
 
 .admin {
 	color: white;
@@ -296,6 +301,10 @@ input{
 }
 
 /*--------------------------------------gestion de la page music-----------------------------------*/
+
+.musicinfos {
+	width: 50%;
+}
 
 .musicinfos img{
 	float: right;
@@ -400,19 +409,15 @@ input{
 		margin-right: 20px;
     border-radius: 10px;
     text-align: center;
-    background: radial-gradient(circle, rgba(0,245,238,-1.9) 35%, rgba(255,0,134,0.1) 100%);
 }
+
 .tab input.btt{
 	margin-left: 0;
 	margin-right: 0;
 	padding-left: 10px;
 	padding-right: 10px;
-
 }
 
-.tab input.btt:hover {
-		background: radial-gradient(circle, rgba(0,245,238,0.8) 35%, rgba(255,0,134,0.8) 100%);
-}
 /*--------------------------------------gestion de l'icone du footer-----------------------------------*/
 
 .icon {
@@ -432,16 +437,6 @@ input{
 
 .github a i:hover {
 	background-color: #337ab7;
-}
-
-.autocomplete {
-	padding: 10px;
-	background-color: rgb(0,0,0);
-	width: 350px;
-	margin-top: 30px;
-	display: flex;
-	flex-direction: column;
-
 }
 
 
@@ -484,6 +479,20 @@ input{
 	color: #8B008B !important;
 }
 
+.btnopt {
+	background-color: #337ab7;
+	height: 40px;
+	margin: 5px !important;
+}
+
+.buttons form {
+	display: flex;
+}
+
+.playlistname {
+	font-size: 20px;
+}
+
 #actualiserBDD {
 	margin-top: 30px;
 	width: 30%;
@@ -491,4 +500,76 @@ input{
 
 .searchbarwithbutton {
 	display: flex;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+	flex-direction: column;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #337ab7;
+  border-right: none;
+  padding: 7px;
+  height: 20px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #337ab7;
+	height: 100%;
+}
+
+.searchTerm:focus{
+  color: #337ab7;
+}
+
+.searchButton {
+  width: 40px;
+  height: 37px;
+  border: 1px solid #337ab7;
+  background: #337ab7;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+	padding: 0;
+}
+
+.wrap{
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.avancedsearch {
+	text-align: center;
+}
+
+#canvas {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -5;
+	opacity: 0.3;
+	top: 0;
+	left: 0;
+}
+
+.tagnames {
+	margin-left: 10px;
+}
+
+.tags {
+	width: 30%;
+  border: 3px solid black;
+  padding: 20px;
+}
+
+.paramavance {
+	color: white;
 }

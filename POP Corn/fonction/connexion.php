@@ -39,12 +39,12 @@ class connect
 		    										if($donnees['Admin'] == "Oui")
                             {
                                 //rediriger sur une autre page
-                                header('Location: '.get_path('pages/back/indexAdmin.php'));
+																echo "<script>document.location.href='".get_path('pages/back/indexAdmin.php')."'</script>";
                                 exit();
                             }
                             else
                             {
-															header('Location: '.get_path('pages/profil.php'));
+															echo "<script>document.location.href='".get_path('pages/profil.php')."'</script>";
 															exit();
                             }
 										}

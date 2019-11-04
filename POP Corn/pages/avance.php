@@ -9,7 +9,7 @@
 
 			$req = "SELECT distinct year(anneeAlbum) as anneeAlbum from album order by anneeAlbum desc";
 			$req = $cnx->query($req);
-			echo "Choisir une année : <br />";
+			echo "<br><span class='paramavance'>Choisir une année : </span><br>";
 			echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 			echo "<select name='annee'>";
 			echo "<option value='selected' selected>Selectionnez</option>";
@@ -24,7 +24,7 @@
 
 			$req = "SELECT DISTINCT * from tag order by nomTag";
 			$req = $cnx->query($req);
-			echo "Choisir par un tag <br />";
+			echo "<span class='paramavance'>Choisir par un tag : </span><br>";
 			echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 			echo "<select name='tag'>";
 			echo "<option value='selected' selected>Selectionnez</option>";
@@ -38,7 +38,7 @@
 
 			$req = "SELECT DISTINCT * from Auteur order by nom";
 			$req = $cnx->query($req);
-			echo "Choisir par un auteur <br />";
+			echo "<span class='paramavance'>Choisir par un auteur : </span><br>";
 			echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 			echo "<select name='auteur'>";
 			echo "<option value='selected' selected>Selectionnez</option>";
@@ -54,7 +54,7 @@
 
 			$req = "SELECT DISTINCT * from musique";
 			$req = $cnx->query($req);
-			echo "Choisir par une durée <br />";
+			echo "<span class='paramavance'>Choisir par une durée : </span><br>";
 			echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 			echo "<select name='duree'>";
 			echo "<option value='selected' selected>Selectionnez</option>";
@@ -72,7 +72,7 @@
 					$req = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
+					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 					{
 						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -80,7 +80,7 @@
 				}
 				else
 				{
-					echo "Veuillez selectionnez une année";
+					echo "<span class='paramavance'>Veuillez selectionnez une année</span>";
 				}
 			}
 			if(!empty($_POST['RechercherTag']))
@@ -90,7 +90,7 @@
 					$req = "SELECT DISTINCT * from posseder p inner join musique m on p.numMusique = m.numMusique where numTag = ".$_POST['tag'];
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
+					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 					{
 						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -98,7 +98,7 @@
 				}
 				else
 				{
-					echo "Veuillez selectionnez un tag";
+					echo "<span class='paramavance'>Veuillez selectionnez un tag</span>";
 				}
 			}
 			if(!empty($_POST['RechercherAuteur']))
@@ -108,7 +108,7 @@
 					$req = "SELECT DISTINCT * from ecrire e inner join musique m on e.numMusique = m.numMusique where numAuteur = '".$_POST['auteur']."'";
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
+					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 					{
 						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -116,7 +116,7 @@
 				}
 				else
 				{
-					echo "Veuillez selectionnez un auteur";
+					echo "<span class='paramavance'>Veuillez selectionnez un auteur</span>";
 				}
 			}
 			if(!empty($_POST['RechercherDuree']))
@@ -133,7 +133,7 @@
 					}
 					$req = $cnx->query($req);
 
-					echo "Voici le résultat de la recherche :";
+					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 					{
 						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -141,7 +141,7 @@
 				}
 				else
 				{
-					echo "Veuillez selectionnez une durée";
+					echo "<span class='paramavance'>Veuillez selectionnez une durée</span>";
 				}
 			}
 
