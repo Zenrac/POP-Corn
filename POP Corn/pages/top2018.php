@@ -30,8 +30,8 @@
 
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
 				echo '<tr>';
-				echo "<th scope='row'>	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btt'></input></th>";
-				echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btt'></input>";
+				echo "<th scope='row'>	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btn btn-primary'></input></th>";
+				echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btn btn-primary'></input>";
 				echo "<td><span name='top'>".$donnees['top']."</span></td>";
 				echo '<td><a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a></td>';
 				echo "<td><span type='text' name='duree'>".$duree."</span></td>";
@@ -66,7 +66,7 @@
 				echo "'<form action='+";
 				echo "'\'".$_SERVER['PHP_SELF']."\''+";
 				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
 						echo "'<div><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
@@ -74,7 +74,7 @@
 						echo "'".$donnees['nom']."'+";
 						echo "'</div>'+";
 				}
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btt\">'+";
+				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btn btn-primary\">'+";
 				echo "'</form>',";
 				echo	"showConfirmButton: false })</script>";
 			}
