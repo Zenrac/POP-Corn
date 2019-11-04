@@ -47,7 +47,6 @@ class recherche
       minLength:2
     });
     });
-    </script>
-    <input id='searchbar' name='barre'>";
+    </script>";
   }
 }

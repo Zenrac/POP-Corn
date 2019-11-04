@@ -1,7 +1,7 @@
 <ul>
   <?php
     echo "<li><a id='index.php' href=".get_path('index.php').">Accueil</a></li>";
-    echo "<li><a id='index.php' href=".get_path('pages/ttmusique.php').">Musique</a></li>";
+    echo "<li><a id='musiques.php' href=".get_path('pages/musiques.php').">Musiques</a></li>";
   ?>
   <li>
     <ul id=deroul class="deroul">
@@ -48,7 +48,5 @@
           echo "<li><a href=".get_path('index.php?deconnexion=1')." name='deconnexion'>Deconnexion</a></li>";
           echo "<script>hide_element('admin-button');</script>";
         }
-
-
   ?>
 </ul>

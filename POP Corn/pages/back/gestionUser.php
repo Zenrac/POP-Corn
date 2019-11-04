@@ -18,8 +18,8 @@
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Modifier' value='Modifier' class='btt'></input>
-								<input type='submit' name='Supprimer' value='Supprimer' class='btt'></input>";
+				echo "	<input type='submit' name='Modifier' value='Modifier' class='btnopt btn btn-secondary btn-sm'></input>
+								<input type='submit' name='Supprimer' value='Supprimer' class='btnopt btn btn-secondary btn-sm'></input>";
 				echo "<input type='text' name='numUser' value='".$donnees['numUser']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly>";
@@ -33,7 +33,7 @@
 			if (!empty($_POST['Modifier']))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Valider' value='Valider' class='btt'></input>";
+				echo "	<input type='submit' name='Valider' value='Valider'  class='btnopt btn btn-secondary btn-sm'></input>";
 				echo "<input type='text' name='numUser' value='".$_POST['numUser']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='pseudo' value='".$_POST['pseudo']."' autocomplete='off' required minlength='2' maxlength='30'>";
