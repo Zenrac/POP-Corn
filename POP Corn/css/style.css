@@ -563,3 +563,7 @@ input{
 .ui-menu-item-wrapper {
 	color: black;
 }
+
+select {
+	color: black;
+}

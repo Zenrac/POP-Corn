@@ -18,7 +18,7 @@
 				echo "<option value=".$donnees['anneeAlbum'].">".$donnees['anneeAlbum']."</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherAn' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherAn' value='Rechercher'/>";
 			echo "</form> <br />";
 
 
@@ -33,7 +33,7 @@
 				echo "<option value=".$donnees['numTag'].">".$donnees['nomTag']."</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherTag' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherTag' value='Rechercher'/>";
 			echo "</form> <br />";
 
 			$req = "SELECT DISTINCT * from Auteur order by nom";
@@ -49,7 +49,7 @@
 				echo "</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherAuteur' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherAuteur' value='Rechercher'/>";
 			echo "</form> <br />";
 
 			$req = "SELECT DISTINCT * from musique";
@@ -61,7 +61,7 @@
 			echo "<option value='courte'>Courte (<3min)</option>";
 			echo "<option value='longue'>Longue (>3min)</option>";
 			echo "</select>";
-			echo "<input type='submit' name='RechercherDuree' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherDuree' value='Rechercher'/>";
 			echo "</form> <br />";
 
 
