@@ -41,7 +41,7 @@
 					$duree = gmdate("i:s", $donnees['duree']/1000);
 					$date = date("Y", strtotime($donnees['anneeAlbum']));
 
-					echo "<div class='musicinfos'>
+					echo "<div class='bodyelement musicinfos'>
 		        	<img class=musicimg src=".$donnees['imageAlbum']." alt='Image de album'>
 		        	<ul class='musictxt'>";
 					echo "<li><p>Titre : </p><p class = lien> ".$donnees['titre']." </p></li>";
@@ -114,14 +114,18 @@
 				echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
 				echo "' method=\'post\'>'+";
 				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+				echo "'<table class=\'table table-alert\'>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
-						echo "'<div><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
-						echo "' value=\'".$donnees['numPlaylist']."\'>'+";
-						echo "'".$donnees['nom']."'+";
+						echo "'<tr>'+";
+						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
+						echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
+						echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
 						echo "'</div>'+";
+						echo "'</tr>'+";
 				}
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btt\">'+";
+				echo "'</table>'+";
+				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
 				echo "'</form>',";
 				echo	"showConfirmButton: false })</script>";
 			}
@@ -162,17 +166,21 @@
 				echo "'<form action='+";
 				echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
 				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
+				echo "'<table class=\'table table-alert\'>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
-						echo "'<div><input type=\"checkbox\" name=\"choixtag[]\"'+";
-						echo "' value=\'".$donnees['numTag']."\'>'+";
-						echo "'".$donnees['nomTag']."'+";
-						echo "'</div>'+";
-				}
-				echo "'<input type=\"submit\" name=\"Valider\" value=\"Valider\" class=\"btt\">'+";
-				echo "'</form>',";
-				echo	"showConfirmButton: false })</script>";
+					echo "'<tr>'+";
+					echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixtag[]\"'+";
+					echo "'value=\'".$donnees['numTag']."\'></td>'+";
+					echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
+					echo "'</div>'+";
+					echo "'</tr>'+";
+			}
+			echo "'</table>'+";
+			echo "'<input type=\"submit\" name=\"Valider\" value=\"Valider\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+			echo "'</form>',";
+			echo	"showConfirmButton: false })</script>";
 			}
 
 			if (!empty($_POST['Valider']))
@@ -209,20 +217,24 @@
 							position: 'center',
 							title: 'Choisir tag',
 							html:";
-				echo "'<form action='+";
-				echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
+				echo "'<form class=\'form-group\' action='+";
+				echo "'\'".$_SERVER['PHP_SELF']."\''+";
 				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
+				echo "'<table class=\'table table-alert\'>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
-						echo "'<div><input type=\"checkbox\" name=\"supptag[]\"'+";
-						echo "' value=\'".$donnees['numTag']."\'>'+";
-						echo "'".$donnees['nomTag']."'+";
-						echo "'</div>'+";
-				}
-				echo "'<input type=\"submit\" name=\"Supp\" value=\"Supprimer\" class=\"btt\">'+";
-				echo "'</form>',";
-				echo	"showConfirmButton: false })</script>";
+					echo "'<tr>'+";
+					echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"supptag[]\"'+";
+					echo "'value=\'".$donnees['numTag']."\'></td>'+";
+					echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
+					echo "'</div>'+";
+					echo "'</tr>'+";
+			}
+			echo "'</table>'+";
+			echo "'<input type=\"submit\" name=\"Supp\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+			echo "'</form>',";
+			echo	"showConfirmButton: false })</script>";
 			}
 
 			if (!empty($_POST['Supp']))

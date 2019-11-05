@@ -35,14 +35,17 @@
 			echo '  </tbody>
 						</table>';
 			echo "</div>";
-			echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-			echo "	<input type='submit' class='spacebottom btnopt btn btn-secondary btn-sm' name='Ajouter' value='Ajouter'></input>";
-			echo "<input type='hidden' name='numTag' value='#' readonly>";
-			echo "</form>";
-			if (!empty($_POST['Ajouter']))
+			if (empty($_POST['Ajouter']))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Confirmer' value='Confirmer'></input>";
+				echo "	<input type='submit' class='spacebottom btnopt btn btn-secondary btn-sm btn-block' name='Ajouter' value='Ajouter'></input>";
+				echo "<input type='hidden' name='numTag' value='#' readonly>";
+				echo "</form>";
+			}
+			else
+			{
+				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
+				echo "	<input type='submit' class='spacebottom btnopt btn btn-secondary btn-sm' name='Confirmer' value='Confirmer'></input>";
 				echo "<input type='text' name='nomTag' value='' autocomplete='off' required minlength='2' maxlength='30'>";
 				echo "</form>";
 					echo "<a href=".get_path('pages/back/gestionTag.php').">Retour arrière</a>";
@@ -73,7 +76,7 @@
 			if (!empty($_POST['Modifier']))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Valider' value='Valider'></input>";
+				echo "	<input type='submit' class='btnopt btn btn-secondary btn-sm' name='Valider' value='Valider'></input>";
 				echo "<input type='text' name='numTag' value='".$_POST['numTag']."' readonly>";
 				echo "  ";
 				echo "<input type='text' name='nomTag' value='".$_POST['nomTag']."' autocomplete='off' required minlength='2' maxlength='30'>";

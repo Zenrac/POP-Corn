@@ -95,7 +95,7 @@
 				if (!empty($_POST['Modifier']))
 				{
 					echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-					echo "	<input type='submit' name='Valider' value='Valider' class='btt'></input>";
+					echo "	<input type='submit' class='btnopt btn btn-secondary btn-sm' name='Valider' value='Valider' class='btt'></input>";
 					echo "<input type='hidden' name='numPlaylist' value='".$_POST['numPlaylist']."' readonly>";
 					echo "<input type='text' name='name' value='".$_POST['nom']."' autocomplete='off' required minlength='2' maxlength='30'>";
 					echo "</form>";
