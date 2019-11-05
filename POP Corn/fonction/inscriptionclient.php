@@ -14,17 +14,19 @@
 						//pas de guillemets si on applique la méthode quote aux variables
 
 						$req2 = $cnx->query($req2);
-						$cpt = 0;
 
-						while($donnees = $req2->fetch(PDO::FETCH_ASSOC))
-							{
-								$cpt = 1;
-							}
+						$elems = $req2->fetchAll();
+						$cpt = count($elems);
 
-
-						if ($cpt == 1)
+						if ($cpt != 0)
 						{
-							echo "Le pseudo est déjà utilisé, chercher un autre pseudo";
+							echo "<script type=\"text/javascript\">
+							Swal.fire({
+							  type: 'error',
+							  title: 'Ce pseudo existe déjà!',
+							  text: 'Merci de saisir un autre pseudo.',
+							})
+							</script>";
 						}
 						else
 						{
@@ -39,12 +41,17 @@
 
 
 								echo "<script type=\"text/javascript\">
-								alert('Vous êtes enregistré')</script>";
+								Swal.fire({
+									type: 'success',
+									title: 'Félicitation',
+									text: 'Vous êtes désormais enregistré!',
+								});
+								</script>";
 
 								$_SESSION['nom'] = $nom;
 
 								$cnx=null;
-								header('Location: '.get_path('pages/profil.php'));
+								echo "<script>document.location.href='".get_path('pages/profil.php')."'</script>";
 								exit();
 					}
 			}

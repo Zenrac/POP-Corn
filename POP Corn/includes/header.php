@@ -13,11 +13,14 @@
 	<!-- Axios -->
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<!-- sweetalert2 -->
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+	<!-- Sweetalert2 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@1/dark.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8/dist/sweetalert2.min.js"></script>
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Full bootstrap -->
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" crossorigin="anonymous">
 
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" crossorigin="anonymous">
@@ -33,6 +36,7 @@
 
 	<script src=<?php echo get_path('scripts/spotify.js');?>></script>
 	<script src=<?php echo get_path('scripts/dynamicElement.js');?>></script>
+	<script src=<?php echo get_path('scripts/canvas.js');?>></script>
 
 	<meta http-equiv="content-type" content="text/html; charset=utf-8">
 	<title>POP Corn</title>

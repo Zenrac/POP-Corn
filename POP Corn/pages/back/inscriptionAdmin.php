@@ -63,7 +63,7 @@ include '../../fonction/verificationback.php';
 
 						if ($cpt == 1)
 						{
-							echo "Le pseudo est déjà utilisé, chercher un autre pseudo";
+							echo "Ce pseudo est déjà utilisé! Merci de saisir un autre pseudo.";
 						}
 						else
 						{
@@ -76,7 +76,12 @@ include '../../fonction/verificationback.php';
 
 
 								echo "<script type=\"text/javascript\">
-								alert('Vous êtes enregistré: ')</script>";
+									Swal.fire({
+									  type: 'success',
+									  title: 'Félicitation',
+									  text: 'Vous êtes désormais enregistré!',
+									});
+								</script>";
 								$cnx=null;
 					}
 

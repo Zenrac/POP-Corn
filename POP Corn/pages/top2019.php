@@ -13,28 +13,44 @@
 			$req = $cnx->query($req);
 
 			echo "<div class='bodyelement musictop'>";
+			echo '<table class="table table-dark">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">Top</th>
+									<th scope="col">Nom</th>
+									<th scope="col">Durée</th>
+								</tr>
+							</thead>
+							<tbody>';
 			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 			{
 				$duree = gmdate("i:s", $donnees['duree']/1000);
 
-
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo "	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btt'></input>";
-				echo "	<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btt'></input>";
-				echo "<input type='text' name='top' value='".$donnees['top']."' size = '4' readonly>";
-				echo "  ";
-				echo '<a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a>';
-				echo "  ";
-				echo "<input type='text' name='duree' value='".$duree."' size='4' readonly>";
-
+				echo '<tr>';
+				echo "<th scope='row'>	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btn btn-primary'></input></th>";
+				echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btn btn-primary'></input>";
+				echo "<td><span name='top'>".$donnees['top']."</span></td>";
+				echo '<td><a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a></td>';
+				echo "<td><span type='text' name='duree'>".$duree."</span></td>";
+				echo '</tr>';
 				echo "</form>";
 			}
+			echo '  </tbody>
+						</table>';
 			echo "</div>";
 
 
 			if (!empty($_POST['Playlist']) && empty($_SESSION['nom']))
 			{
-				echo "<script type='text/javascript'> alert('Vous devez vous connecter pour ajouter à votre playlist !')</script>";
+				echo "<script type='text/javascript'>
+				Swal.fire({
+			    type: 'error',
+			    title: 'Vous n\'êtes pas connecté!',
+			    text: 'Vous devez être connecté pour ajouter une musique à votre playlist.',
+			  })
+			  </script>";
 			}
 			elseif(!empty($_POST['Playlist']))
 			{
@@ -49,7 +65,7 @@
 				echo "'<form action='+";
 				echo "'\'".$_SERVER['PHP_SELF']."\''+";
 				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
 						echo "'<div><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
@@ -57,7 +73,7 @@
 						echo "'".$donnees['nom']."'+";
 						echo "'</div>'+";
 				}
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btt\">'+";
+				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btn btn-primary\">'+";
 				echo "'</form>',";
 				echo	"showConfirmButton: false })</script>";
 			}
