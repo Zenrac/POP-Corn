@@ -82,12 +82,41 @@
 
 			if (!empty($_POST['Confirmer']))
 			{
-
+				$test = true;
 				foreach($_POST['choixplaylist'] as $val)
 				{
 					$num = $cnx->quote($_POST['numMusique']);
-					$rep = "INSERT INTO contenir values (".$val.",".$num.")";
-					$cnx->exec($rep);
+					$rep = "select * from contenir where numPlaylist = ".$val." and numMusique = ".$num;
+					echo $rep;
+					$rep = $cnx->query($rep);
+					$elems = $rep->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 1)
+					{
+						echo "<script type='text/javascript'>
+						Swal.fire({
+					    type: 'error',
+					    title: 'Musique non ajoutée',
+					    text: 'Votre musique est déjà dans une des playlists',
+						});
+					  </script>";
+						$test = false;
+					}
+					else
+					{
+						$rep = "INSERT INTO contenir values (".$val.",".$num.")";
+						$cnx->exec($rep);
+					}
+				}
+				if($test)
+				{
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'success',
+						title: 'Musique Ajoutée',
+						text: 'Votre musique a bien été ajoutée',
+					});
+					</script>";
 				}
 			}
 
