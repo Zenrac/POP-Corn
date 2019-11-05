@@ -72,18 +72,18 @@
 					$req = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
 					$req = $cnx->query($req);
 
-					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
+
 					$req2 = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
 					$req2 = $cnx->query($req2);
 					$elems = $req2->fetchAll();
 					$nblignes = count($elems);
 					if ($nblignes == 0)
 					{
-						echo "Il n'y a pas de résultat pour cette recherche";
+						echo "<span class='paramavance'>Il n'y a pas de résultat pour cette recherche</span><br>";
 					}
 					else
 					{
-						echo "Voici le résultat de la recherche :";
+						echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -108,11 +108,11 @@
 					$nblignes = count($elems);
 					if ($nblignes == 0)
 					{
-						echo "Il n'y a pas de résultat pour cette recherche";
+						echo "<span class='paramavance'>Il n'y a pas de résultat pour cette recherche</span><br>";
 					}
 					else
 					{
-						echo "Voici le résultat de la recherche :";
+						echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -137,11 +137,11 @@
 					$nblignes = count($elems);
 					if ($nblignes == 0)
 					{
-						echo "Il n'y a pas de résultat pour cette recherche";
+						echo "<span class='paramavance'>Il n'y a pas de résultat pour cette recherche</span><br>";
 					}
 					else
 					{
-						echo "Voici le résultat de la recherche :";
+						echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 						{
 							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
@@ -172,11 +172,11 @@
 					$nblignes = count($elems);
 					if ($nblignes == 0)
 					{
-						echo "Il n'y a pas de résultat pour cette recherche";
+						echo "<span class='paramavance'>Il n'y a pas de résultat pour cette recherche</span><br>";
 					}
 					else
 					{
-						echo "Voici le résultat de la recherche :";
+						echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
 						foreach($elems as $donnees)
 						{
 							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
