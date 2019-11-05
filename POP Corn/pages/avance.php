@@ -6,7 +6,10 @@
 			include_once '../includes/header.php';
 			$cnx = connexpdo('bdpopcorn','myparam');
 			include_once(get_path('fonction/recherche.php'));
-
+			echo '<canvas id="canvas"></canvas>
+			<script type="text/javascript">
+				backgroundEffect("canvas");
+			</script>';
 			$req = "SELECT distinct year(anneeAlbum) as anneeAlbum from album order by anneeAlbum desc";
 			$req = $cnx->query($req);
 			echo "<br><span class='paramavance'>Choisir une année : </span><br>";
@@ -167,8 +170,7 @@
 					}
 					$req = $cnx->query($req);
 
-					$req2 = $cnx->query($req2);
-					$elems = $req2->fetchAll();
+					$elems = $req->fetchAll();
 					$nblignes = count($elems);
 					if ($nblignes == 0)
 					{
