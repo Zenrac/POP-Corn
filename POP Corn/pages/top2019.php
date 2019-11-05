@@ -62,18 +62,22 @@
 						  position: 'center',
 						  title: 'Choisir playlist',
 							html:";
-				echo "'<form action='+";
+				echo "'<form class=\'form-group\' action='+";
 				echo "'\'".$_SERVER['PHP_SELF']."\''+";
 				echo "' method=\'post\'>'+";
 				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
+				echo "'<table class=\'table table-alert\'>'+";
 				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
 				{
-						echo "'<div><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
-						echo "' value=\'".$donnees['numPlaylist']."\'>'+";
-						echo "'".$donnees['nom']."'+";
+						echo "'<tr>'+";
+						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
+						echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
+						echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
 						echo "'</div>'+";
+						echo "'</tr>'+";
 				}
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btn btn-primary\">'+";
+				echo "'</table>'+";
+				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
 				echo "'</form>',";
 				echo	"showConfirmButton: false })</script>";
 			}
@@ -85,7 +89,6 @@
 				{
 					$num = $cnx->quote($_POST['numMusique']);
 					$rep = "INSERT INTO contenir values (".$val.",".$num.")";
-					var_dump($rep);
 					$cnx->exec($rep);
 				}
 			}

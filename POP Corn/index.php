@@ -85,7 +85,7 @@
 					$req = $cnx->query($req);
 					$elems = $req->fetchAll();
 					$donnees = $elems[0];
-					echo "<span class=paramavance>Pour l'auteur : ".$_POST['barre'].", Voici les chansons écritent :</span> <br />";
+					echo "<span class=paramavance>Pour l'auteur : ".$_POST['barre'].", voici les chansons écritent :</span> <br><br>";
 
 					$req2 = "SELECT a.numAuteur, nom, e.numMusique, titre, duree, nomAlbum
 					from auteur a inner join ecrire e on a.numAuteur = e.numAuteur inner join musique m on e.numMusique = m.numMusique
@@ -106,7 +106,7 @@
 					$req = $cnx->query($req);
 					$elems = $req->fetchAll();
 					$donnees = $elems[0];
-					echo "Pour l'album : ".$_POST['barre'].", Voici les chansons écritent : <br />";
+					echo "<span class=paramavance> Pour l'album : ".$_POST['barre'].", voici les chansons écritent :</span> <br><br>";
 
 					$req2 = "SELECT a.numAuteur, nom, e.numMusique, titre, duree, nomAlbum
 					from auteur a inner join ecrire e on a.numAuteur = e.numAuteur inner join musique m on e.numMusique = m.numMusique
