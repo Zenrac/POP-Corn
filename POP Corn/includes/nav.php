@@ -44,7 +44,7 @@
   <?php
         if(!empty($_SESSION['nom']))
         {
-          echo "<li><a href=".get_path('pages/profil.php').">Profil</a></li>";
+          echo "<li><a id='profil.php' href=".get_path('pages/profil.php').">Profil</a></li>";
           echo "<li><a href=".get_path('index.php?deconnexion=1')." name='deconnexion'>Deconnexion</a></li>";
           echo "<script>hide_element('admin-button');</script>";
         }
