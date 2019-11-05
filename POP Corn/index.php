@@ -123,7 +123,7 @@
 				}
 				else
 				{
-					echo "Ce que vous recherché n'existe pas, ou alors vous l'avez mal écrit <br /> Réessayer";
+					echo "Ce que vous recherché n'existe pas, ou alors vous l'avez mal écrit";
 				}
 				echo "<script>
 				function reload() {

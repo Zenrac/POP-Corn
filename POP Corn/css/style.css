@@ -5,6 +5,7 @@
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
+	color: white;
 }
 
 @font-face {
@@ -394,30 +395,6 @@ input{
 
 }
 
-/*--------------------------------------gestion des tableau d'affichage-----------------------------------*/
-.tab{
-	margin-top: 50px;
-}
-
-.tab input {
-		font-size: 1.2em;
-		width: auto;
-    color: black;
-    padding: 4px;
-    margin-top: 5px;
-		margin-left: 20px;
-		margin-right: 20px;
-    border-radius: 10px;
-    text-align: center;
-}
-
-.tab input.btt{
-	margin-left: 0;
-	margin-right: 0;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
 /*--------------------------------------gestion de l'icone du footer-----------------------------------*/
 
 .icon {
@@ -513,7 +490,7 @@ input{
   width: 100%;
   border: 3px solid #337ab7;
   border-right: none;
-  padding: 7px;
+  padding: 5px;
   height: 20px;
   border-radius: 5px 0 0 5px;
   outline: none;
@@ -523,6 +500,11 @@ input{
 
 .searchTerm:focus{
   color: #337ab7;
+}
+
+.table-dark {
+	background-color: rgba(255, 255, 255, 0.01);
+	border: 2px solid black;
 }
 
 .searchButton {
@@ -572,4 +554,16 @@ input{
 
 .paramavance {
 	color: white;
+}
+
+.spacebottom {
+	margin-bottom: 15px;
+}
+
+.ui-menu-item-wrapper {
+	color: black;
+}
+
+select {
+	color: black;
 }

@@ -18,7 +18,7 @@
 				echo "<option value=".$donnees['anneeAlbum'].">".$donnees['anneeAlbum']."</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherAn' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherAn' value='Rechercher'/>";
 			echo "</form> <br />";
 
 
@@ -33,7 +33,7 @@
 				echo "<option value=".$donnees['numTag'].">".$donnees['nomTag']."</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherTag' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherTag' value='Rechercher'/>";
 			echo "</form> <br />";
 
 			$req = "SELECT DISTINCT * from Auteur order by nom";
@@ -49,7 +49,7 @@
 				echo "</option>";
 			}
 			echo "</select>";
-			echo "<input type='submit' name='RechercherAuteur' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherAuteur' value='Rechercher'/>";
 			echo "</form> <br />";
 
 			$req = "SELECT DISTINCT * from musique";
@@ -61,7 +61,7 @@
 			echo "<option value='courte'>Courte (<3min)</option>";
 			echo "<option value='longue'>Longue (>3min)</option>";
 			echo "</select>";
-			echo "<input type='submit' name='RechercherDuree' value='Rechercher'/>";
+			echo "<input type='submit' class='btnopt btn btn-secondary btn-sm' name='RechercherDuree' value='Rechercher'/>";
 			echo "</form> <br />";
 
 
@@ -73,9 +73,21 @@
 					$req = $cnx->query($req);
 
 					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT * from album a inner join musique m on a.numAlbum = m.numAlbum where year(anneeAlbum) = ".$_POST['annee'];
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -90,10 +102,21 @@
 					$req = "SELECT DISTINCT * from posseder p inner join musique m on p.numMusique = m.numMusique where numTag = ".$_POST['tag'];
 					$req = $cnx->query($req);
 
-					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT DISTINCT * from posseder p inner join musique m on p.numMusique = m.numMusique where numTag = ".$_POST['tag'];
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -108,10 +131,21 @@
 					$req = "SELECT DISTINCT * from ecrire e inner join musique m on e.numMusique = m.numMusique where numAuteur = '".$_POST['auteur']."'";
 					$req = $cnx->query($req);
 
-					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = "SELECT DISTINCT * from ecrire e inner join musique m on e.numMusique = m.numMusique where numAuteur = '".$_POST['auteur']."'";
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else
@@ -133,10 +167,20 @@
 					}
 					$req = $cnx->query($req);
 
-					echo "<span class='paramavance'>Voici le résultat de la recherche :</span><br>";
-					while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+					$req2 = $cnx->query($req2);
+					$elems = $req2->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 0)
 					{
-						echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						echo "Il n'y a pas de résultat pour cette recherche";
+					}
+					else
+					{
+						echo "Voici le résultat de la recherche :";
+						foreach($elems as $donnees)
+						{
+							echo "<a href='".get_path('pages/music.php?id='.$donnees['numMusique'])."'>".$donnees['titre']."</a>";
+						}
 					}
 				}
 				else

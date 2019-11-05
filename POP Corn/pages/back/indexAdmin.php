@@ -10,10 +10,8 @@
 
 		<?php
 			if (!isset($_POST['spotify'])) {
-
 				$client_id = '37f040251306463aa43d272d61d68526';
 				$client_secret = 'd0df61c03b394843939d462426bcbc6a';
-
 				$ch = curl_init();
 				curl_setopt($ch, CURLOPT_URL,            'https://accounts.spotify.com/api/token' );
 				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1 );
@@ -22,7 +20,6 @@
 				curl_setopt($ch, CURLOPT_POST,           1 );
 				curl_setopt($ch, CURLOPT_POSTFIELDS,     'grant_type=client_credentials' );
 				curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Authorization: Basic '.base64_encode($client_id.':'.$client_secret)));
-
 				$result=curl_exec($ch);
 				if(curl_errno($ch))
 				    echo 'Curl error: '.curl_error($ch);
@@ -31,12 +28,10 @@
 				echo "<script>setVariables('" . $result . "')</script>";
 				echo "<button href='#' id='actualiserBDD' onclick='fillDataBase()'>Actualier BDD</button>";
 				echo "<h3 id=spotifymsg></h3>";
-
 				include_once(get_path('outils/connexpdo.inc.php'));
 				$cnx=connexpdo('bdpopcorn','myparam');
 				$req = "SELECT DISTINCT * from tag";
 				$req = $cnx->query($req);
-
 				$elems = $req->fetchAll();
 				echo "<div class='tags'>";
 				echo '<h3>URL optionnel</h3>';
