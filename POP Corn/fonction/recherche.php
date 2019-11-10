@@ -5,7 +5,8 @@ class recherche
 	{
     include_once(get_path('outils/connexpdo.inc.php'));
     $cnx=connexpdo('bdpopcorn','myparam');
-		if ($cnx) {
+		if ($cnx)
+		{
       $req="
       SELECT titre, nomAlbum, nom
       FROM Musique M
