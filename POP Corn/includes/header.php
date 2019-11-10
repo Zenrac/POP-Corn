@@ -117,4 +117,49 @@
 
 		}
 	}
+	else {
+		$dsn = "mysql:host=localhost";
+		$go = true;
+		try {
+    	$pdo = new PDO($dsn,"root","root");
+		}
+		catch(PDOException $except)
+		{
+			echo "<script>console.log(swal)</script>";
+			echo "<script type='text/javascript'>
+			Swal.fire({
+				type: 'error',
+				title: 'Impossible de créer la base de donnée.',
+				text: 'La base de donnée BDPopCorn n\'a pas été trouvée, et il est impossible de la créer automatiquement. Merci de la créer manuellement.'
+			});
+			</script>";
+			$go = false;
+		}
+		if ($go)
+		{
+			$pdo->query("CREATE DATABASE bdpopcorn;");
+			$sql = file_get_contents(get_path('../BDD/base_bdpopcorn.sql'));
+			$requests = explode(';', $sql);
+			$db = new PDO("mysql:dbname=bdpopcorn;host=localhost", "root", "root" );
+			foreach ($requests as $request) {
+				try {
+					$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling
+					// $req = $db->quote($request);
+					if (!empty($request)) {
+						$db->exec($request);
+					}
+				} catch(PDOException $e) {
+				    // echo $e->getMessage();
+				}
+			}
+			echo "<script>console.log(swal)</script>";
+			echo "<script type='text/javascript'>
+			Swal.fire({
+				type: 'success',
+				title: 'Base de donnée ajoutée.',
+				text: 'La base de donnée BDPopCorn a été installée automatiquement.'
+			});
+			</script>";
+		}
+	}
 ?>

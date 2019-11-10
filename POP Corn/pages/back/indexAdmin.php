@@ -39,10 +39,15 @@
        placeholder="https://open.spotify.com/playlist/5sTHqyG2DAwmTCopHXHRdz"
        pattern="https://.*" size="30">';
 				echo '<h3>Tags de bases optionnels:</h3>';
-				foreach ($elems as $value) {
-					echo '<input class="tagelement" type="checkbox" name='.$value['nomTag'].' id='.$value['numTag'].'>';
-					echo '<label class="tagnames" for='.$value['nomTag'].'>'.$value['nomTag'].'</label>';
-					echo '<br>';
+				if (!empty($elems)) {
+					foreach ($elems as $value) {
+						echo '<input class="tagelement" type="checkbox" name='.$value['nomTag'].' id='.$value['numTag'].'>';
+						echo '<label class="tagnames" for='.$value['nomTag'].'>'.$value['nomTag'].'</label>';
+						echo '<br>';
+					}
+				}
+				else {
+					echo 'Pas de tag. <a href='.get_path('pages/back/gestionTag.php').'>Ajoutez en!</a>';
 				}
 				echo "</div>";
 			}
