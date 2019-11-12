@@ -68,6 +68,9 @@ jQuery(document).ready(function($) {
   });
 });
 
+/**
+ * Permet de mettre en couleur la page actuelle dans le menu.
+ */
 function setCurrentPage() {
   var active = document.getElementById(location.pathname.split('/').slice(-1)[0])
   if (active != null) {

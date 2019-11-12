@@ -10,31 +10,38 @@
 			$cnx=connexpdo('bdpopcorn','myparam');
 			$req="	SELECT * FROM tag";
 			$req = $cnx->query($req);
-			echo '<div class="bodyelement">';
-			echo '<table class="table table-dark">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">ID</th>
-									<th scope="col">Nom</th>
-								</tr>
-							</thead>
-							<tbody>';
-
-			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-			{
-				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo '<tr>';
-				echo "<th scope='row'><input type='submit' name='Modifier' value='Modifier' class='btnopt btn btn-secondary btn-sm'></input>
-								<input type='submit' name='Supprimer' value='Supprimer' class='btnopt btn btn-secondary btn-sm'></input></th>";
-				echo "<td><input type='text' name='numTag' value='".$donnees['numTag']."' readonly></td>";
-				echo "  ";
-				echo "<td><input type='text' name='nomTag' value='".$donnees['nomTag']."' readonly></td>";
-				echo "</form>";
+			$donnee = $req->fetchall();
+			$nblignes = count($donnee);
+			if ($nblignes == 0) {
+				echo "<h4>Cette liste de tag est vide!</h4>";
 			}
-			echo '  </tbody>
-						</table>';
-			echo "</div>";
+			else {
+				echo '<div class="bodyelement">';
+				echo '<table class="table table-dark">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">ID</th>
+										<th scope="col">Nom</th>
+									</tr>
+								</thead>
+								<tbody>';
+
+				foreach ($donnee as $donnees)
+				{
+					echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
+					echo '<tr>';
+					echo "<th scope='row'><input type='submit' name='Modifier' value='Modifier' class='btnopt btn btn-secondary btn-sm'></input>
+									<input type='submit' name='Supprimer' value='Supprimer' class='btnopt btn btn-secondary btn-sm'></input></th>";
+					echo "<td><input type='text' name='numTag' value='".$donnees['numTag']."' readonly></td>";
+					echo "  ";
+					echo "<td><input type='text' name='nomTag' value='".$donnees['nomTag']."' readonly></td>";
+					echo "</form>";
+				}
+				echo '  </tbody>
+							</table>';
+				echo "</div>";
+			}
 			if (empty($_POST['Ajouter']))
 			{
 				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";

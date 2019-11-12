@@ -1,3 +1,7 @@
+/**
+ * Permet d'afficher un effet animé en background d'un element.
+ * @param  {String} id L'ID de l'element auquel il faut ajouter un background animé.
+ */
 function backgroundEffect(id) {
     var Canvas = document.getElementById('canvas');
     var ctx = Canvas.getContext('2d');
@@ -95,5 +99,5 @@ function backgroundEffect(id) {
         var time = new Date().getTime();
         for (var e in elements)
         elements[e].draw(ctx, time);
-    }, 10);
+    }, 10); // Actualiser la position des elements toutes les 10ms
 };
