@@ -14,30 +14,37 @@
 		<?php
 			$req="	SELECT * FROM utilisateur";
 			$req = $cnx->query($req);
-			echo '<table class="table table-dark">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">ID</th>
-									<th scope="col">Mot de passe</th>
-									<th scope="col">Admin</th>
-								</tr>
-							</thead>
-							<tbody>';
-			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-			{
-				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo '<tr>';
-				echo "<th scope='row'><input type='submit' name='Modifier' value='Modifier' class='btnopt btn btn-secondary btn-sm'></input>
-								<input type='submit' name='Supprimer' value='Supprimer' class='btnopt btn btn-secondary btn-sm'></input></th>";
-				echo "<td><input type='text' name='numUser' value='".$donnees['numUser']."' readonly></td>";
-				echo "<td><input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly></td>";
-				echo "<td><input type='text' name='mdpUser' value='".$donnees['mdpUser']."' readonly></td>";
-				echo "<td><input type='text' name='Admin' value='".$donnees['Admin']."' readonly></td>";
-				echo "</form>";
+			$donnee = $req->fetchall();
+			$nblignes = count($donnee);
+			if ($nblignes == 0) {
+				echo "<h4>Il n'y a pas d'utilisateurs... Comment êtes vous connecté?</h4>";
 			}
-			echo '  </tbody>
-						</table>';
+			else {
+				echo '<table class="table table-dark">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">ID</th>
+										<th scope="col">Mot de passe</th>
+										<th scope="col">Admin</th>
+									</tr>
+								</thead>
+								<tbody>';
+				foreach ($donnee as $donnees)
+				{
+					echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
+					echo '<tr>';
+					echo "<th scope='row'><input type='submit' name='Modifier' value='Modifier' class='btnopt btn btn-secondary btn-sm'></input>
+									<input type='submit' name='Supprimer' value='Supprimer' class='btnopt btn btn-secondary btn-sm'></input></th>";
+					echo "<td><input type='text' name='numUser' value='".$donnees['numUser']."' readonly></td>";
+					echo "<td><input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly></td>";
+					echo "<td><input type='text' name='mdpUser' value='".$donnees['mdpUser']."' readonly></td>";
+					echo "<td><input type='text' name='Admin' value='".$donnees['Admin']."' readonly></td>";
+					echo "</form>";
+				}
+				echo '  </tbody>
+							</table>';
+			}
 			echo "</div>";
 			if (!empty($_POST['Modifier']))
 			{
@@ -86,13 +93,27 @@
 			}
 			if (!empty($_POST['Supprimer']))
 			{
-				$numUser = "";
+				$pseudo = $_POST['pseudo'];
 				$numUser = $cnx->quote($_POST['numUser']);
-				$req="	Delete from utilisateur where numUser = ".$numUser;
-				$cnx->exec($req);
-				echo "<script>
-				location.assign(location.href);</script>";
-				$cnx = null;
+
+				if ($pseudo == $_SESSION['nom'])
+				{
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Vous ne pouvez pas vous supprimer vous même!',
+						text: 'Abruti ...',
+					})
+					</script>";
+				}
+				else {
+					$req="	Delete from utilisateur where numUser = ".$numUser;
+					$cnx->exec($req);
+					echo "<script>
+					location.assign(location.href);</script>";
+					$cnx = null;
+				}
+
 			}
 		?>
 	</div>

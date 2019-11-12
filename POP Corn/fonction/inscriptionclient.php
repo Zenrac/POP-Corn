@@ -1,7 +1,4 @@
 <?php
-	include_once(get_path('outils/connexpdo.inc.php'));
-	$cnx=connexpdo('bdpopcorn','myparam');
-
 	class inscript
 	{
 		public function funcinscription ($nom, $mdp)
@@ -9,7 +6,8 @@
 			include_once(get_path('outils/connexpdo.inc.php'));
 					$cnx=connexpdo('bdpopcorn','myparam');
 
-
+					if($cnx)
+					{
 						$req2="	SELECT * FROM utilisateur where '".$nom."' = pseudo;";
 						//pas de guillemets si on applique la méthode quote aux variables
 
@@ -53,7 +51,8 @@
 								$cnx=null;
 								echo "<script>document.location.href='".get_path('pages/profil.php')."'</script>";
 								exit();
-					}
+							}
+						}
 			}
 	}
 
