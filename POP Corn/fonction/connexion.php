@@ -1,7 +1,4 @@
 <?php
-include_once(get_path('outils/connexpdo.inc.php'));
-$cnx=connexpdo('bdpopcorn','myparam');
-
 class connect
 {
 	public function funcconnection ($nom, $mdp)
@@ -9,22 +6,24 @@ class connect
 		include_once(get_path('outils/connexpdo.inc.php'));
         $cnx=connexpdo('bdpopcorn','myparam');
 
-			// verifie que l'utilisateur a bien mis la bonne combinaison nom/mot de passe
-			$requete1 = "	SELECT pseudo FROM utilisateur
+				if($cnx)
+				{
+						// verifie que l'utilisateur a bien mis la bonne combinaison nom/mot de passe
+						$requete1 = "	SELECT pseudo FROM utilisateur
 							WHERE pseudo = '".$nom."'
 							AND mdpUser = '".$mdp."'
 							 ;";
 
-			$req=$cnx->query($requete1);
-			$lignes=$req->fetchall();
-			$nblignes = count($lignes);
+						$req=$cnx->query($requete1);
+						$lignes=$req->fetchall();
+						$nblignes = count($lignes);
 
-				if($nblignes==0)
-					{
-						echo "<H1>Erreur de connexion</H1>";
-					}
-				else
-				{
+						if($nblignes==0)
+							{
+								echo "<H1>Erreur de connexion</H1>";
+							}
+						else
+						{
               $requete2 = "	SELECT Admin FROM utilisateur
 							WHERE pseudo = '".$nom."'
 							AND mdpUser = '".$mdp."';";
@@ -50,10 +49,11 @@ class connect
 										}
 
 
-				}
-					$cnx=null;
-					$req ->closeCursor();
-	}
+							}
+							$cnx=null;
+							$req ->closeCursor();
+						}
+			}
 }
 
 ?>

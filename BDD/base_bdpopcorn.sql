@@ -132,3 +132,15 @@ ALTER TABLE `posseder`
 INSERT INTO `utilisateur` (`numUser`, `pseudo`, `mdpUser`, `Admin`) VALUES
 (1, 'admin', 'password', 'Oui'),
 (2, 'user', 'password', 'Non');
+
+INSERT INTO `tag` (`numTag`, `nomTag`) VALUES
+(1, 'Pop'),
+(2, 'Pop-Rock'),
+(3, 'K-Pop'),
+(4, 'Hip-Pop'),
+(5, 'Musique Alternative/indé'),
+(6, 'Electro-Pop'),
+(7, 'R&B/Soul'),
+(8, 'Pop-Latino'),
+(9, 'Pop-Rap'),
+(10, 'Country-Pop');
