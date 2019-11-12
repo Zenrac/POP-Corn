@@ -10,35 +10,40 @@
 
 			$req="	SELECT titre, duree, top, numMusique FROM musique m inner join album a on m.numAlbum = a.numAlbum order by titre";
 			$req = $cnx->query($req);
-
-			echo "<div class='bodyelement musictop'>";
-			echo '<table class="table table-dark">
-							<thead>
-								<tr>
-									<th scope="col">#</th>
-									<th scope="col">Nom</th>
-									<th scope="col">Durée</th>
-								</tr>
-							</thead>
-							<tbody>';
-			while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-			{
-				$duree = gmdate("i:s", $donnees['duree']/1000);
-
-
-				echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
-				echo '<tr>';
-				echo "<th scope='row'>	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btn btn-primary'></input></th>";
-				echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btn btn-primary'></input>";
-				echo '<td><a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a></td>';
-				echo "<td><span type='text' name='duree'>".$duree."</span></td>";
-				echo '</tr>';
-				echo "</form>";
+			$donnee = $req->fetchall();
+			$nblignes = count($donnee);
+			if ($nblignes == 0) {
+				echo "<h4>Cette liste de musique est vide! Demandez à un administrateur de la remplir!</h4>";
 			}
-			echo '  </tbody>
-						</table>';
-			echo "</div>";
+			else {
+				echo "<div class='bodyelement musictop'>";
+				echo '<table class="table table-dark">
+								<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">Nom</th>
+										<th scope="col">Durée</th>
+									</tr>
+								</thead>
+								<tbody>';
+				foreach($donnee as $donnees)
+				{
+					$duree = gmdate("i:s", $donnees['duree']/1000);
 
+
+					echo "<form action='".$_SERVER['PHP_SELF']."' method='post'>";
+					echo '<tr>';
+					echo "<th scope='row'>	<input type='submit' name='Playlist' value='Ajouter à la playlist' class='btn btn-primary'></input></th>";
+					echo "<input type='hidden' name='numMusique' value='".$donnees['numMusique']."' class='btn btn-primary'></input>";
+					echo '<td><a href='.get_path('pages/music.php?id='.$donnees['numMusique']).'>'.$donnees['titre'].'</a></td>';
+					echo "<td><span type='text' name='duree'>".$duree."</span></td>";
+					echo '</tr>';
+					echo "</form>";
+				}
+				echo '  </tbody>
+							</table>';
+				echo "</div>";
+			}
 
 			if (!empty($_POST['Playlist']) && empty($_SESSION['nom']))
 			{
