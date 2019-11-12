@@ -55,7 +55,7 @@
 				curl_close ($ch);
 				$result = explode('",', explode('access_token":"', $result)[1])[0];
 				echo "<script>setVariables('" . $result . "')</script>";
-				echo "<button id='actualiserBDD' onclick='fillDataBase()'>Actualier BDD</button>";
+				echo "<button id='actualiserBDD' onclick='fillDataBase()'>Actualiser BDD</button>";
 				echo "<h3 id=spotifymsg></h3>";
 				$cnx=connexpdo('bdpopcorn','myparam');
 				$req = "SELECT DISTINCT * from tag";

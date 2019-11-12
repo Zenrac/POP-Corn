@@ -62,42 +62,97 @@
 			{
 				$req = "Select * from utilisateur u inner join playlist p on u.numUser = p.numUser where pseudo ='".$_SESSION['nom']."'";
 				$req = $cnx->query($req);
+				$donnee = $req->fetchall();
 				$reponse = $_POST['numMusique'];
-				echo "<script type='text/javascript'>
-							Swal.fire({
-						  position: 'center',
-						  title: 'Choisir playlist',
-							html:";
-				echo "'<form class=\'form-group\' action='+";
-				echo "'\'".$_SERVER['PHP_SELF']."\''+";
-				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
-				echo "'<table class=\'table table-alert\'>'+";
-				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-				{
-						echo "'<tr>'+";
-						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
-						echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
-						echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
-						echo "'</div>'+";
-						echo "'</tr>'+";
+				$nblignes = count($donnee);
+				if ($nblignes != 0) {
+					echo "<script type='text/javascript'>
+								Swal.fire({
+							  position: 'center',
+							  title: 'Choisir playlist',
+								html:";
+					echo "'<form action='+";
+					echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
+					echo "' method=\'post\'>'+";
+					echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+					echo "'<table class=\'table table-alert\'>'+";
+					foreach($donnee as $donnees)
+					{
+							echo "'<tr>'+";
+							echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
+							echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
+							echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
+							echo "'</div>'+";
+							echo "'</tr>'+";
+					}
+					echo "'</table>'+";
+					echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+					echo "'</form>',";
+					echo	"showConfirmButton: false })</script>";
 				}
-				echo "'</table>'+";
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
-				echo "'</form>',";
-				echo	"showConfirmButton: false })</script>";
+				else {
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Aucune playlist trouvées!',
+						text: 'Ajoutez une playlist sur votre profil.',
+					})
+					</script>";
+				}
 			}
 
 			if (!empty($_POST['Confirmer']))
 			{
-
+				$aumoinsune = false;
+				$test = true;
 				foreach($_POST['choixplaylist'] as $val)
 				{
+					$aumoinsune = true;
 					$num = $cnx->quote($_POST['numMusique']);
-					$rep = "INSERT INTO contenir values (".$val.",".$num.")";
-					$cnx->exec($rep);
+					$rep = "select * from contenir where numPlaylist = ".$val." and numMusique = ".$num;
+					echo $rep;
+					$rep = $cnx->query($rep);
+					$elems = $rep->fetchAll();
+					$nblignes = count($elems);
+					if ($nblignes == 1)
+					{
+						echo "<script type='text/javascript'>
+						Swal.fire({
+					    type: 'error',
+					    title: 'Musique non ajoutée',
+					    text: 'Votre musique est déjà dans une des playlists',
+						});
+					  </script>";
+						$test = false;
+					}
+					else
+					{
+						$rep = "INSERT INTO contenir values (".$val.",".$num.")";
+						$cnx->exec($rep);
+					}
+				}
+				if (!$aumoinsune) {
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Aucune playlist selectionnée',
+						text: 'Merci de selectionner au moins une playlist.',
+					});
+					</script>";
+				}
+				else if($test)
+				{
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'success',
+						title: 'Musique Ajoutée',
+						text: 'Votre musique a bien été ajoutée',
+					});
+					</script>";
 				}
 			}
+
+
 			include_once ('../includes/footer.php');
 		?>
 
