@@ -1,4 +1,4 @@
-INSERT INTO `musique` (`numMusique`, `numAlbum`, `titre`, `duree`, `top`) VALUES
+INSERT IGNORE INTO `musique` (`numMusique`, `numAlbum`, `titre`, `duree`, `top`) VALUES
 ('05CwHjIk71RXVU40boRMnR', '1ONuDpN0a3zhCUyKCgtuzK', 'Call You Mine', '217653', 1),
 ('0DiDStADDVh3SvAsoJAFMk', '1Uf67JAtkVWfdydzFFqNF2', 'Only Human', '183000', 2),
 ('0Ev562zA4pmUsBqjxsxxdx', '1fP5UnRB0WNWNHSZRHsRCR', 'Feel Good (feat. Daya)', '248156', 1),
@@ -100,7 +100,7 @@ INSERT INTO `musique` (`numMusique`, `numAlbum`, `titre`, `duree`, `top`) VALUES
 ('7qEHsqek33rTcFNT9PFqLf', '5658aM19fA3JVwTK6eQX70', 'Someone You Loved', '182160', 72),
 ('7xKgIO7hF7sbljmZa6TTEl', '2XzL7kpsqEoEcB1M26P1cz', 'Bad Decisions', '219600', 24);
 
-INSERT INTO `posseder` (`numMusique`, `numTag`) VALUES
+INSERT IGNORE INTO `posseder` (`numMusique`, `numTag`) VALUES
 ('05CwHjIk71RXVU40boRMnR', 1),
 ('0DiDStADDVh3SvAsoJAFMk', 1),
 ('0Ev562zA4pmUsBqjxsxxdx', 1),
@@ -188,15 +188,14 @@ INSERT INTO `posseder` (`numMusique`, `numTag`) VALUES
 ('0TK2YIli7K1leLovkQiNik', 8),
 ('5w9c2J52mkdntKOmRLeM2m', 8);
 
-INSERT INTO `tag` (`numTag`, `nomTag`) VALUES
+INSERT IGNORE INTO `tag` (`numTag`, `nomTag`) VALUES
 (1, 'Pop'),
 (2, 'Pop-Rock'),
 (3, 'K-Pop'),
 (4, 'Hip-Pop'),
-(5, 'Musique Alternative/indé'),
+(5, 'Musique Alternative'),
 (6, 'Electro-Pop'),
 (7, 'R&B/Soul'),
 (8, 'Pop-Latino'),
 (9, 'Pop-Rap'),
 (10, 'Country-Pop');
-
