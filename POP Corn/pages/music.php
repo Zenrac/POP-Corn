@@ -103,41 +103,94 @@
 			{
 				$req = "Select * from utilisateur u inner join playlist p on u.numUser = p.numUser where pseudo ='".$_SESSION['nom']."'";
 				$req = $cnx->query($req);
+				$donnee = $req->fetchall();
 				$reponse = $_POST['numMusique'];
-
-				echo "<script type='text/javascript'>
-							Swal.fire({
-						  position: 'center',
-						  title: 'Choisir playlist',
-							html:";
-				echo "'<form action='+";
-				echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
-				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
-				echo "'<table class=\'table table-alert\'>'+";
-				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-				{
-						echo "'<tr>'+";
-						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
-						echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
-						echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
-						echo "'</div>'+";
-						echo "'</tr>'+";
+				$nblignes = count($donnee);
+				if ($nblignes != 0) {
+					echo "<script type='text/javascript'>
+								Swal.fire({
+							  position: 'center',
+							  title: 'Choisir playlist',
+								html:";
+					echo "'<form action='+";
+					echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
+					echo "' method=\'post\'>'+";
+					echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btt\'></input>'+";
+					echo "'<table class=\'table table-alert\'>'+";
+					foreach($donnee as $donnees)
+					{
+							echo "'<tr>'+";
+							echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixplaylist[]\"'+";
+							echo "'value=\'".$donnees['numPlaylist']."\'></td>'+";
+							echo "'<td><label class=\'label-alert\'>".$donnees['nom']."</label></td>'+";
+							echo "'</div>'+";
+							echo "'</tr>'+";
+					}
+					echo "'</table>'+";
+					echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+					echo "'</form>',";
+					echo	"showConfirmButton: false })</script>";
 				}
-				echo "'</table>'+";
-				echo "'<input type=\"submit\" name=\"Confirmer\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
-				echo "'</form>',";
-				echo	"showConfirmButton: false })</script>";
+				else {
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Aucune playlist trouvées!',
+						text: 'Ajoutez une playlist sur votre profil.',
+					})
+					</script>";
+				}
 			}
-
 			if (!empty($_POST['Confirmer']))
 			{
-
-				foreach($_POST['choixplaylist'] as $val)
+				$aumoinsune = false;
+				$test = true;
+				if (isset($_POST['choixplaylist'])) {
+					foreach($_POST['choixplaylist'] as $val)
+					{
+						$aumoinsune = true;
+						$num = $cnx->quote($_POST['numMusique']);
+						$rep = "select * from contenir where numPlaylist = ".$val." and numMusique = ".$num;
+						echo $rep;
+						$rep = $cnx->query($rep);
+						$elems = $rep->fetchAll();
+						$nblignes = count($elems);
+						if ($nblignes == 1)
+						{
+							echo "<script type='text/javascript'>
+							Swal.fire({
+						    type: 'error',
+						    title: 'Musique non ajoutée',
+						    text: 'Votre musique est déjà dans une des playlists',
+							});
+						  </script>";
+							$test = false;
+						}
+						else
+						{
+							$rep = "INSERT INTO contenir values (".$val.",".$num.")";
+							$cnx->exec($rep);
+						}
+					}
+				}
+				if (!$aumoinsune) {
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Aucune playlist selectionnée',
+						text: 'Merci de selectionner au moins une playlist.',
+					});
+					</script>";
+				}
+				else if($test)
 				{
-					$num = $cnx->quote($_POST['numMusique']);
-					$rep = "INSERT INTO contenir values (".$val.",".$num.")";
-					$cnx->exec($rep);
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'success',
+						title: 'Musique Ajoutée',
+						text: 'Votre musique a bien été ajoutée',
+					});
+					</script>";
 				}
 			}
 
@@ -157,43 +210,70 @@
 				$reponse = $_POST['numMusique'];
 				$req = "Select * from tag";
 				$req = $cnx->query($req);
-
-				echo "<script type='text/javascript'>
-							Swal.fire({
-							position: 'center',
-							title: 'Choisir tag',
-							html:";
-				echo "'<form action='+";
-				echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
-				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
-				echo "'<table class=\'table table-alert\'>'+";
-				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
-				{
-					echo "'<tr>'+";
-					echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixtag[]\"'+";
-					echo "'value=\'".$donnees['numTag']."\'></td>'+";
-					echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
-					echo "'</div>'+";
-					echo "'</tr>'+";
-			}
-			echo "'</table>'+";
-			echo "'<input type=\"submit\" name=\"Valider\" value=\"Valider\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
-			echo "'</form>',";
-			echo	"showConfirmButton: false })</script>";
+				$donnee = $req->fetchall();
+				$nblignes = count($donnee);
+				if ($nblignes != 0) {
+					echo "<script type='text/javascript'>
+								Swal.fire({
+								position: 'center',
+								title: 'Choisir tag',
+								html:";
+					echo "'<form action='+";
+					echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
+					echo "' method=\'post\'>'+";
+					echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
+					echo "'<table class=\'table table-alert\'>'+";
+					foreach ($donnee as $donnees)
+					{
+						echo "'<tr>'+";
+						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"choixtag[]\"'+";
+						echo "'value=\'".$donnees['numTag']."\'></td>'+";
+						echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
+						echo "'</div>'+";
+						echo "'</tr>'+";
+					}
+					echo "'</table>'+";
+					echo "'<input type=\"submit\" name=\"Valider\" value=\"Valider\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+					echo "'</form>',";
+					echo	"showConfirmButton: false })</script>";
+					}
+					else
+					{
+						echo "<script type='text/javascript'>
+						Swal.fire({
+							type: 'error',
+							title: 'Aucun tag trouvés!',
+							text: 'Demandez à un administrateur d'en ajouter.',
+						})
+						</script>";
+					}
 			}
 
 			if (!empty($_POST['Valider']))
 			{
-
-				foreach($_POST['choixtag'] as $val)
-				{
-					$num = $cnx->quote($_POST['numMusique']);
-					$nums = $_POST['numMusique'];
-					$rep = "INSERT INTO posseder values (".$num.",".$val.")";
-					$cnx->exec($rep);
+				$aumoinsune = false;
+				if (isset($_POST['choixtag'])) {
+					$aumoinsune = true;
+					foreach($_POST['choixtag'] as $val)
+					{
+						$num = $cnx->quote($_POST['numMusique']);
+						$nums = $_POST['numMusique'];
+						$rep = "INSERT INTO posseder values (".$num.",".$val.")";
+						$cnx->exec($rep);
+					}
 				}
-				echo "<script>document.location.href='music.php?id=$nums' </script>";
+				if ($aumoinsune) {
+					echo "<script>document.location.href='music.php?id=$nums' </script>";
+				}
+				else {
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Aucun tag selectionné',
+						text: 'Merci de selectionner au moins un tag.',
+					});
+					</script>";
+				}
 			}
 
 			if (!empty($_POST['SupTag']) && empty($_SESSION['nom']))
@@ -239,7 +319,6 @@
 
 			if (!empty($_POST['Supp']))
 			{
-
 				foreach($_POST['supptag'] as $val)
 				{
 					$num = $cnx->quote($_POST['numMusique']);

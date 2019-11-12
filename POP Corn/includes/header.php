@@ -57,8 +57,7 @@
 
 	<nav>
 			<?php
-				error_reporting(0);
-				ini_set('display_errors', 0);
+
 				if (strpos($_SERVER['PHP_SELF'], "back") !== false) {
 					include_once(get_path('includes/nav_back.php'));
 				}

@@ -25,6 +25,7 @@
 									<tr>
 										<th scope="col">#</th>
 										<th scope="col">ID</th>
+										<th scope="col">Utilisateur</th>
 										<th scope="col">Mot de passe</th>
 										<th scope="col">Admin</th>
 									</tr>
