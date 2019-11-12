@@ -123,7 +123,6 @@
 				if($deja)
 				{
 					$req .= ";";
-					echo $req;
 					$req = $cnx->query($req);
 					$elems = $req->fetchAll();
 					$nblignes = count($elems);

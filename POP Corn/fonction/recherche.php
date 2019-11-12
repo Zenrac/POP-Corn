@@ -1,13 +1,12 @@
 <?php
-include_once(get_path('outils/connexpdo.inc.php'));
-$cnx=connexpdo('bdpopcorn','myparam');
-
 class recherche
 {
 	public function funcrecherche ()
 	{
     include_once(get_path('outils/connexpdo.inc.php'));
     $cnx=connexpdo('bdpopcorn','myparam');
+		if ($cnx)
+		{
       $req="
       SELECT titre, nomAlbum, nom
       FROM Musique M
@@ -37,21 +36,22 @@ class recherche
       }
       $arr = implode('|', $arr);
 
-    echo "
-    <script>
-    $( function() {
-      var allTags = `".$arr."`;
-      var availableTags = allTags.split('|');
-      $( '#searchbar' ).autocomplete({
-      source: availableTags,
-      minLength:2
-    });
-    });
+	    echo "
+	    <script>
+	    $( function() {
+	      var allTags = `".$arr."`;
+	      var availableTags = allTags.split('|');
+	      $( '#searchbar' ).autocomplete({
+	      source: availableTags,
+	      minLength:2
+	    });
+	    });
 
-			jQuery.ui.autocomplete.prototype._resizeMenu = function () {
-  		var ul = this.menu.element;
-  		ul.outerWidth(this.element.outerWidth());
-		}
-    </script>";
-  }
+				jQuery.ui.autocomplete.prototype._resizeMenu = function () {
+	  		var ul = this.menu.element;
+	  		ul.outerWidth(this.element.outerWidth());
+			}
+	    </script>";
+  	}
+	}
 }

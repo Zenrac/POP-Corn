@@ -41,6 +41,10 @@ ol, ul {
 	margin-bottom: 0px;
 }
 
+h1 {
+	color: white;
+}
+
 h4 {
 	text-align: center;
 	color: #0082A7;
@@ -470,6 +474,10 @@ input{
 	margin: 20px;
 }
 
+.remy {
+	width: 30%;
+}
+
 .playlistname {
 	font-size: 20px;
 }
@@ -478,6 +486,11 @@ input{
 	margin-top: 30px;
 	width: 30%;
 }
+
+ #actualiserBDDInsert {
+	 margin-top: 30px;
+	 margin-bottom: 30px;
+ }
 
 .searchbarwithbutton {
 	display: flex;
