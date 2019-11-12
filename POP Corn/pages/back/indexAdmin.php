@@ -15,17 +15,26 @@
 				$cnx=connexpdo('bdpopcorn','myparam');
 				$sql = file_get_contents(get_path('../BDD/insert_bdpopcorn.sql'));
 				$requests = explode(';', $sql);
+				$go = false;
 				foreach ($requests as $request) {
 					try {
 						if (!empty($request)) {
-							$cnx->exec($request);
+							$remy = $cnx->exec($request);
 						}
 					} catch(PDOException $e) {
 							// echo $e->getMessage();
 					}
+					if ($remy != 0) {
+						$go = true;
+					}
 				}
-				echo "<h3>Pré-configuration ajoutée.</h3>";
-				// compter nombre ligne modif pour changer ce msg 
+				if ($go) {
+					echo "<h4>Pré-configuration ajoutée.</h4>";
+				}
+				else {
+					echo "<h4>Pré-configuration déjà installée.</h4>";
+				}
+				// compter nombre ligne modif pour changer ce msg
 				$cnx=null;
 			}
 
