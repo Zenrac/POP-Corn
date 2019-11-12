@@ -86,13 +86,27 @@
 			}
 			if (!empty($_POST['Supprimer']))
 			{
-				$numUser = "";
+				$pseudo = $_POST['pseudo'];
 				$numUser = $cnx->quote($_POST['numUser']);
-				$req="	Delete from utilisateur where numUser = ".$numUser;
-				$cnx->exec($req);
-				echo "<script>
-				location.assign(location.href);</script>";
-				$cnx = null;
+
+				if ($pseudo == $_SESSION['nom'])
+				{
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Vous ne pouvez pas vous supprimer vous même!',
+						text: 'Abruti ...',
+					})
+					</script>";
+				}
+				else {
+					$req="	Delete from utilisateur where numUser = ".$numUser;
+					$cnx->exec($req);
+					echo "<script>
+					location.assign(location.href);</script>";
+					$cnx = null;
+				}
+
 			}
 		?>
 	</div>
