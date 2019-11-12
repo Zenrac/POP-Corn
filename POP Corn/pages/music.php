@@ -216,7 +216,7 @@
 					echo "<script type='text/javascript'>
 								Swal.fire({
 								position: 'center',
-								title: 'Choisir tag',
+								title: 'Choisir un tag',
 								html:";
 					echo "'<form action='+";
 					echo "'\'".$_SERVER['PHP_SELF']."?id=".$reponse."\''+";
@@ -291,42 +291,75 @@
 				$reponse = $_POST['numMusique'];
 				$req = "Select * from posseder p inner join tag t on p.numTag = t.numTag where numMusique = '".$reponse."'";
 				$req = $cnx->query($req);
-
-				echo "<script type='text/javascript'>
-							Swal.fire({
-							position: 'center',
-							title: 'Choisir tag',
-							html:";
-				echo "'<form class=\'form-group\' action='+";
-				echo "'\'".$_SERVER['PHP_SELF']."\''+";
-				echo "' method=\'post\'>'+";
-				echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
-				echo "'<table class=\'table table-alert\'>'+";
-				while($donnees = $req->fetch(PDO::FETCH_ASSOC))
+				$donnee = $req->fetchall();
+				$nblignes = count($donnee);
+				if ($nblignes != 0)
 				{
-					echo "'<tr>'+";
-					echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"supptag[]\"'+";
-					echo "'value=\'".$donnees['numTag']."\'></td>'+";
-					echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
-					echo "'</div>'+";
-					echo "'</tr>'+";
-			}
-			echo "'</table>'+";
-			echo "'<input type=\"submit\" name=\"Supp\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
-			echo "'</form>',";
-			echo	"showConfirmButton: false })</script>";
-			}
-
-			if (!empty($_POST['Supp']))
-			{
-				foreach($_POST['supptag'] as $val)
-				{
-					$num = $cnx->quote($_POST['numMusique']);
-					$nums = $_POST['numMusique'];
-					$rep = "Delete from posseder where numMusique = ".$num." and numTag =".$val;
-					$cnx->exec($rep);
+					echo "<script type='text/javascript'>
+								Swal.fire({
+								position: 'center',
+								title: 'Choisir un tag',
+								html:";
+					echo "'<form class=\'form-group\' action='+";
+					echo "'\'".$_SERVER['PHP_SELF']."\''+";
+					echo "' method=\'post\'>'+";
+					echo "'	<input type=\'hidden\' name=\'numMusique\' value=\'".$reponse."\' class=\'btn btn-primary\'></input>'+";
+					echo "'<table class=\'table table-alert\'>'+";
+					foreach($donnee as $donnees)
+					{
+						echo "'<tr>'+";
+						echo "'<td><div class=\'opt\'><input type=\"checkbox\" name=\"supptag[]\"'+";
+						echo "'value=\'".$donnees['numTag']."\'></td>'+";
+						echo "'<td><label class=\'label-alert\'>".$donnees['nomTag']."</label></td>'+";
+						echo "'</div>'+";
+						echo "'</tr>'+";
+					}
+					echo "'</table>'+";
+					echo "'<input type=\"submit\" name=\"Supp\" value=\"Confirmer\" class=\"btnopt btn btn-secondary btn-sm btn-block\">'+";
+					echo "'</form>',";
+					echo	"showConfirmButton: false })</script>";
 				}
+				else {
+						echo "<script type='text/javascript'>
+						Swal.fire({
+							type: 'error',
+							title: 'Aucun tag a supprimer!',
+							text: 'Ajoutez en un.',
+						});
+						</script>";
+					}
+				}
+
+				if (!empty($_POST['Supp']))
+				{
+				$aumoinsunencore = false;
+				if (isset($_POST['supptag'])) {
+					foreach($_POST['supptag'] as $val)
+					{
+						$aumoinsunencore = true;
+						$num = $cnx->quote($_POST['numMusique']);
+						$nums = $_POST['numMusique'];
+						$rep = "Delete from posseder where numMusique = ".$num." and numTag =".$val;
+						$cnx->exec($rep);
+					}
+				}
+				$nums = $_POST['numMusique'];
+				if (!$aumoinsunencore) {
+					echo "<script>document.location.href='music.php?id=$nums&error=true' </script>";
+				}
+				else {
 					echo "<script>document.location.href='music.php?id=$nums' </script>";
+				}
+			}
+
+			if (isset($_GET['error'])) {
+				echo "<script type='text/javascript'>
+				Swal.fire({
+					type: 'error',
+					title: 'Aucun tag selectionné!',
+					text: 'Merci de selectionner un tag à supprimer.',
+				})
+				</script>";
 			}
 
 		?>
