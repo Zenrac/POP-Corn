@@ -5,7 +5,7 @@
 		<?php
 			include_once '../includes/header.php';
 		?>
-
+			<h1>Nous contacter</h1>
 			<form class="formulaire" method="post">
 				    <div>
 				        <label for="name">Nom :</label>
