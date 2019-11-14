@@ -73,10 +73,9 @@
 
 <!--Verifier connexion-->
 <?php
-	error_reporting(0);
-	ini_set('display_errors', 0);
+
 	include_once(get_path('outils/connexpdo.inc.php'));
-	$cnx = connexpdo('bdpopcorn','myparam');
+	$cnx = connexpdo('bdpopcorn');
 	if ($cnx) {
 		include_once(get_path('fonction/connexion.php'));
 		include_once(get_path('fonction/inscriptionclient.php'));
@@ -124,7 +123,11 @@
 		$dsn = "mysql:host=localhost";
 		$go = true;
 		try {
-    	$pdo = new PDO($dsn,"root","root");
+			include_once(get_path('outils/connexpdo.inc.php'));
+			$params = getParams();
+			$user = $params[0];
+			$pass = $params[1];
+    	$pdo = new PDO($dsn, $user, $pass);
 		}
 		catch(PDOException $except)
 		{
@@ -132,8 +135,8 @@
 			echo "<script type='text/javascript'>
 			Swal.fire({
 				type: 'error',
-				title: 'Impossible de créer la base de donnée.',
-				text: 'La base de donnée BDPopCorn n\'a pas été trouvée, et il est impossible de la créer automatiquement. Merci de la créer manuellement.'
+				title: 'Impossible de se connecter à la base de donnée.',
+				text: 'Veuillez modifier le fichier outils/connexpod.inc.php pour définir des identifiants corrects.'
 			});
 			</script>";
 			$go = false;
@@ -143,7 +146,7 @@
 			$pdo->query("CREATE DATABASE bdpopcorn;");
 			$sql = file_get_contents(get_path('../BDD/base_bdpopcorn.sql'));
 			$requests = explode(';', $sql);
-			$db = new PDO("mysql:dbname=bdpopcorn;host=localhost", "root", "root" );
+			$db = connexpdo('bdpopcorn');
 			foreach ($requests as $request) {
 				try {
 					$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );//Error Handling

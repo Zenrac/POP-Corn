@@ -28,7 +28,7 @@
 			if (!empty($_POST['Confirmer']))
 			{
 				include_once(get_path('outils/connexpdo.inc.php'));
-				$cnx=connexpdo('bdpopcorn','myparam');
+				$cnx=connexpdo('bdpopcorn');
 
 				$nomPlay = "";
 				$nomPlay = $cnx->quote($_POST['nomPlay']);
@@ -122,7 +122,7 @@
 					else
 					{
 						include_once(get_path('outils/connexpdo.inc.php'));
-						$cnx=connexpdo('bdpopcorn','myparam');
+						$cnx=connexpdo('bdpopcorn');
 
 						$req2="	UPDATE playlist
 								SET nom = ".$nom." WHERE numPlaylist =".$playlist;

@@ -4,7 +4,7 @@ class connect
 	public function funcconnection ($nom, $mdp)
 	{
 		include_once(get_path('outils/connexpdo.inc.php'));
-        $cnx=connexpdo('bdpopcorn','myparam');
+        $cnx=connexpdo('bdpopcorn');
 
 				if($cnx)
 				{

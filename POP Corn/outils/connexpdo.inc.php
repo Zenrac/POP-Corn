@@ -1,10 +1,16 @@
 <?php
-	function connexpdo($base,$param)
+	function getParams() {
+		$user = "root";
+		$pass = "";
+		return array($user, $pass);
+	}
+
+	function connexpdo($base)
 	{
-		include_once($param.".inc.php");
+		$params = getParams();
+		$user = $params[0];
+		$pass = $params[1];
 		$dsn="mysql:host=localhost;dbname=".$base.";charset=UTF8";
-		$user="root";
-		$pass="root";
 		try
 		{
 			$cnx = new PDO($dsn,$user,$pass);

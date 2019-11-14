@@ -7,7 +7,7 @@
 			$_SESSION['page'] = "INDEXAD";
 			include '../../fonction/verificationback.php';
 			include_once(get_path('outils/connexpdo.inc.php'));
-			$cnx=connexpdo('bdpopcorn','myparam');
+			$cnx=connexpdo('bdpopcorn');
 			echo '<div class="bodyelement">';
 		?>
 	<div class="tab">
@@ -82,7 +82,7 @@
 				else
 				{
 					include_once(get_path('outils/connexpdo.inc.php'));
-					$cnx=connexpdo('bdpopcorn','myparam');
+					$cnx=connexpdo('bdpopcorn');
 					$req2="	UPDATE utilisateur
 							SET pseudo = ".$pseudo.", mdpUser = ".$mdpUser.", Admin = ".$Admin."
 							WHERE numUser =".$numUser;

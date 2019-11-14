@@ -6,7 +6,7 @@
 			include_once ('../includes/header.php');
 
 			include_once(get_path('outils/connexpdo.inc.php'));
-			$cnx=connexpdo('bdpopcorn','myparam');
+			$cnx=connexpdo('bdpopcorn');
 
 			$req="	SELECT titre, duree, top, numMusique FROM musique m inner join album a on m.numAlbum = a.numAlbum
 			where year(anneeAlbum) = 2018 order by top, titre";
@@ -152,7 +152,7 @@
 					</script>";
 				}
 			}
-			
+
 			include_once ('../includes/footer.php');
 		?>
 

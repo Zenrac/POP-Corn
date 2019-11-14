@@ -32,7 +32,7 @@
 			}
 			if (empty($_POST['barre'])) {
 			include_once(get_path('outils/connexpdo.inc.php'));
-			$cnx = connexpdo('bdpopcorn','myparam');
+			$cnx = connexpdo('bdpopcorn');
 			include_once(get_path('fonction/recherche.php'));
 			$instance = new recherche();
 			$instance->funcrecherche();
@@ -51,7 +51,7 @@
 		}
 			else
 			{
-				$cnx = connexpdo('bdpopcorn','myparam');
+				$cnx = connexpdo('bdpopcorn');
 				include_once(get_path('fonction/recherche.php'));
 				$rech = $cnx->quote($_POST['barre']);
 				$req = "SELECT * from Musique where titre = ".$rech;
