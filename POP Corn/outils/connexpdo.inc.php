@@ -1,7 +1,7 @@
 <?php
 	function getParams() {
 		$user = "root";
-		$pass = "";
+		$pass = "root";
 		return array($user, $pass);
 	}
 

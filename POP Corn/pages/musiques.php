@@ -107,7 +107,6 @@
 					$aumoinsune = true;
 					$num = $cnx->quote($_POST['numMusique']);
 					$rep = "select * from contenir where numPlaylist = ".$val." and numMusique = ".$num;
-					echo $rep;
 					$rep = $cnx->query($rep);
 					$elems = $rep->fetchAll();
 					$nblignes = count($elems);
