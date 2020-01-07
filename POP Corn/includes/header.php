@@ -75,6 +75,7 @@
 <?php
 	error_reporting(0);
 	ini_set('display_errors', 0);
+
 	include_once(get_path('outils/connexpdo.inc.php'));
 	$cnx = connexpdo('bdpopcorn');
 	if ($cnx) {
@@ -105,13 +106,25 @@
 					}
 					else
 					{
-						echo "Vous n'avez pas enregistré le même mot de passe, réessayez!";
+						echo "<script type='text/javascript'>
+						Swal.fire({
+							type: 'error',
+							title: 'Les mots de passes ne sont pas identiques.',
+							text: 'Vous n\'avez pas enregistré le même mot de passe, réessayez!'
+						});
+						</script>";
 					}
 
 				}
 				else
 				{
-					echo "Erreur, vous n'avez pas vérifié le mot de passe!";
+					echo "<script type='text/javascript'>
+					Swal.fire({
+						type: 'error',
+						title: 'Les mots de passes ne sont pas identiques.',
+						text: 'Vous n\'avez pas enregistré le même mot de passe, réessayez!'
+					});
+					</script>";
 				}
 			}
 
@@ -132,7 +145,6 @@
 		}
 		catch(PDOException $except)
 		{
-			echo "<script>console.log(swal)</script>";
 			echo "<script type='text/javascript'>
 			Swal.fire({
 				type: 'error',
@@ -159,7 +171,6 @@
 				    // echo $e->getMessage();
 				}
 			}
-			echo "<script>console.log(swal)</script>";
 			echo "<script type='text/javascript'>
 			Swal.fire({
 				type: 'success',

@@ -6,11 +6,13 @@
 
 	function get_path($path)
 	{
-		$separator_before_main_folder = 3;
+		// chemin de base
 		$base = $_SERVER['PHP_SELF'];
 		$separator = substr($base, 0, 1);
-		$separators = substr_count($base, $separator);
-		$count = $separators - $separator_before_main_folder;
+
+		$main_folder = explode('POP-Corn/POP Corn/', $_SERVER['PHP_SELF'], 2);
+		$count = substr_count($main_folder[1], '/');
+
 		if ($count > 0) {
 			$before = str_repeat('../', $count);
 		}
@@ -19,5 +21,4 @@
 		}
 		return $before . $path;
 	}
-
 ?>
