@@ -40,12 +40,12 @@
 			echo '<div class="wrap">
 			   <div class="autocomplete search">
 				 		<div class="searchbarwithbutton">
-				      <input id="searchbar" name="barre" type="text" class="searchTerm" placeholder="Quel est votre recherche?">
+				      <input id="searchbar" name="barre" type="text" class="searchTerm" placeholder="Quelle est votre recherche?">
 				      <button type="submit" class="recherchebutton searchButton">
 				        <i class="fa fa-search"></i>
 				     </button>
 						</div>
-					 <a class="avancedsearch" href="'.get_path("pages/avance.php").'">Faire une recherche avancé ?</a>
+					 <a class="avancedsearch" href="'.get_path("pages/avance.php").'">Faire une recherche avancée ?</a>
 			   </div>
 			</div>';
 		}
