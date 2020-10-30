@@ -41,7 +41,7 @@
 					echo "<td><input type='text' name='pseudo' value='".$donnees['pseudo']."' readonly></td>";
 					echo "<td><input type='text' name='mdpUser' value='".$donnees['mdpUser']."' readonly></td>";
 					echo "<td><input type='text' name='Admin' value='".$donnees['Admin']."' readonly></td>";
-					echo "</form>";
+					echo "</tr></form>";
 				}
 				echo '  </tbody>
 							</table>';
