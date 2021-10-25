@@ -7,7 +7,7 @@
 			$_SESSION['page'] = "INDEXAD";
 			include '../../fonction/verificationback.php';
 			include_once(get_path('outils/connexpdo.inc.php'));
-			$cnx=connexpdo('bdpopcorn','myparam');
+			$cnx=connexpdo('bdpopcorn');
 			$req="	SELECT * FROM tag";
 			$req = $cnx->query($req);
 			$donnee = $req->fetchall();
@@ -72,7 +72,7 @@
 				else
 				{
 					include_once(get_path('outils/connexpdo.inc.php'));
-					$cnx=connexpdo('bdpopcorn','myparam');
+					$cnx=connexpdo('bdpopcorn');
 					$req2="	insert into Tag (nomTag) values (".$nomTag.")";
 					$cnx->exec($req2);
 					echo "<script>
@@ -107,7 +107,7 @@
 				else
 				{
 					include_once(get_path('outils/connexpdo.inc.php'));
-					$cnx=connexpdo('bdpopcorn','myparam');
+					$cnx=connexpdo('bdpopcorn');
 					$req2="	UPDATE tag
 							SET nomTag = ".$nomTag."
 							WHERE numTag =".$numTag;

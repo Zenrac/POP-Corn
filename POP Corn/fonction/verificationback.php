@@ -26,7 +26,7 @@ function my_exception_handler($e) {
     try
     {
       include_once(get_path('outils/connexpdo.inc.php'));
-      $cnx=connexpdo('bdoccasion','myparam');
+      $cnx=connexpdo('bdoccasion');
     }
     catch (Exception $e)
     {

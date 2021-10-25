@@ -596,3 +596,7 @@ select {
 option {
 	color: inherit;
 }
+
+textarea {
+	color: black;
+}

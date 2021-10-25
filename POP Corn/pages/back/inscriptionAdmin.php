@@ -33,7 +33,7 @@ include '../../fonction/verificationback.php';
 
 <?php
 	include_once(get_path('outils/connexpdo.inc.php'));
-	$cnx=connexpdo('bdpopcorn','myparam');
+	$cnx=connexpdo('bdpopcorn');
 			if (!empty($_POST['lieninsertion']))
 				{
 					$nom = "";

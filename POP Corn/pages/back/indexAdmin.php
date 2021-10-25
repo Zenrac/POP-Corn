@@ -12,7 +12,7 @@
 			include_once(get_path('outils/connexpdo.inc.php'));
 
 			if (isset($_POST['insert'])) {
-				$cnx=connexpdo('bdpopcorn','myparam');
+				$cnx=connexpdo('bdpopcorn');
 				$sql = file_get_contents(get_path('../BDD/insert_bdpopcorn.sql'));
 				$requests = explode(';', $sql);
 				$go = false;
@@ -57,7 +57,7 @@
 				echo "<script>setVariables('" . $result . "')</script>";
 				echo "<button id='actualiserBDD' onclick='fillDataBase()'>Actualiser BDD</button>";
 				echo "<h3 id=spotifymsg></h3>";
-				$cnx=connexpdo('bdpopcorn','myparam');
+				$cnx=connexpdo('bdpopcorn');
 				$req = "SELECT DISTINCT * from tag";
 				$req = $cnx->query($req);
 				$elems = $req->fetchAll();
@@ -84,7 +84,7 @@
 				$cnx=null;
 			}
 			else {
-				$cnx=connexpdo('bdpopcorn','myparam');
+				$cnx=connexpdo('bdpopcorn');
 				// $all_insert = explode(');', $_POST['spotify']);
 				// foreach ($all_insert as $insert) {
 				// 	$full_insert = $insert + ');';

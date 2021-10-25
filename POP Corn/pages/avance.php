@@ -4,7 +4,7 @@
 
 		<?php
 			include_once '../includes/header.php';
-			$cnx = connexpdo('bdpopcorn','myparam');
+			$cnx = connexpdo('bdpopcorn');
 			include_once(get_path('fonction/recherche.php'));
 			echo '<canvas id="canvas"></canvas>
 			<script type="text/javascript">

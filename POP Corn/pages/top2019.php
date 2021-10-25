@@ -6,7 +6,7 @@
 			include_once ('../includes/header.php');
 
 			include_once(get_path('outils/connexpdo.inc.php'));
-			$cnx=connexpdo('bdpopcorn','myparam');
+			$cnx=connexpdo('bdpopcorn');
 
 			$req="	SELECT titre, duree, top, numMusique FROM musique m inner join album a on m.numAlbum = a.numAlbum
 			where year(anneeAlbum) = 2019 order by top, titre";
@@ -110,7 +110,6 @@
 					$aumoinsune = true;
 					$num = $cnx->quote($_POST['numMusique']);
 					$rep = "select * from contenir where numPlaylist = ".$val." and numMusique = ".$num;
-					echo $rep;
 					$rep = $cnx->query($rep);
 					$elems = $rep->fetchAll();
 					$nblignes = count($elems);
